@@ -1,0 +1,42 @@
+{
+  "data": [
+    {
+      "estados": ["q1", "q2", "q3", "q4", "q5", "q6", "qf1", "qf2"],
+      "alfabeto_entrada": ["a", "b", "c"],
+      "alfabeto_fita": ["a", "b", "c", "X", "_"],
+      "estado_inicial": "q1",
+      "simbolo_branco": "_",
+      "estados_finais": ["qf1", "qf2"],
+      "transicoes": {
+        "q1": {
+          "a": { "destino": "q2", "direcao": "D", "gravar": "X" },
+          "_": { "destino": "qf1", "direcao": "D", "gravar": "_" }
+        },
+        "q2": {
+          "a": { "destino": "q2", "direcao": "D", "gravar": "a" },
+          "b": { "destino": "q3", "direcao": "D", "gravar": "X" },
+          "X": { "destino": "q2", "direcao": "D", "gravar": "X" }
+        },
+        "q3": {
+          "b": { "destino": "q3", "direcao": "D", "gravar": "b" },
+          "c": { "destino": "q4", "direcao": "E", "gravar": "X" },
+          "X": { "destino": "q3", "direcao": "D", "gravar": "X" }
+        },
+        "q4": {
+          "a": { "destino": "q5", "direcao": "E", "gravar": "a" },
+          "b": { "destino": "q4", "direcao": "E", "gravar": "b" },
+          "X": { "destino": "q4", "direcao": "E", "gravar": "X" },
+          "_": { "destino": "q6", "direcao": "D", "gravar": "_" }
+        },
+        "q5": {
+          "a": { "destino": "q5", "direcao": "E", "gravar": "a" },
+          "X": { "destino": "q1", "direcao": "D", "gravar": "X" }
+        },
+        "q6": {
+          "X": { "destino": "q6", "direcao": "D", "gravar": "X" },
+          "_": { "destino": "qf2", "direcao": "D", "gravar": "_" }
+        }
+      }
+    }
+  ]
+}
