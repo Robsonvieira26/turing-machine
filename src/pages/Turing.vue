@@ -240,6 +240,7 @@ export default {
       this.submitted = false;
       this.transicoesRealizadas = [];
       this.disabled = false;
+      this.maquinaCalculo = false;
       this.drawTape();
     },
 
