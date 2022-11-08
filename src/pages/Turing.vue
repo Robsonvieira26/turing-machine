@@ -130,7 +130,7 @@ export default {
         { name: "aⁿbⁿcⁿ", value: 0 },
         { name: "Teste D1 1 - aⁿbⁿ", value: 1 },
         { name: "Teste D1 2 - aⁿbⁿcⁿ", value: 2 },
-        { name: "Teste D1 3", value: 3 },
+        { name: "Teste D1 3 - Maior ou menor", value: 3 },
         { name: "aⁿbᵐaⁿ⁺ᵐ", value: 4 },
         { name: "Monus", value: 5 },
         { name: "Teste D2 1 - wcwᴿ", value: 6},
