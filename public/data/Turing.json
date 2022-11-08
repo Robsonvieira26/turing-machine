@@ -52,7 +52,7 @@
         },
         "q1": {
           "a": { "destino": "q1", "direcao": "D", "gravar": "a" },
-          "y": { "destino": "q1", "direcao": "D", "gravar": "Y" },
+          "Y": { "destino": "q1", "direcao": "D", "gravar": "Y" },
           "b": { "destino": "q2", "direcao": "E", "gravar": "Y" }
         },
         "q2": {
@@ -120,7 +120,7 @@
           },
           "q2": {
               "1": {"destino": "q3", "direcao": "E", "gravar": "y"},
-              "y": {"destino": "q2", "direcao": "R", "gravar": "y"},
+              "y": {"destino": "q2", "direcao": "D", "gravar": "y"},
               "_": {"destino": "qv", "direcao": "E", "gravar": "_"}
           },
           "q3": {
@@ -210,8 +210,8 @@
       "estados_finais": [],
       "transicoes": {
           "q0": {
-              "0": {"destino": "q1", "direcao": "D", "gravar": "0"},
-              "1": {"destino": "q5", "direcao": "D", "gravar": "1"}
+              "0": {"destino": "q1", "direcao": "D", "gravar": "_"},
+              "1": {"destino": "q5", "direcao": "D", "gravar": "_"}
           },
           "q1": {
               "0": {"destino": "q1", "direcao": "D", "gravar": "0"},

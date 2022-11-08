@@ -174,14 +174,6 @@ export default {
       // this.sleep(2000);
     },
 
-    forceRender() {
-      // console.log("forceRender");
-      this.showTape = false;
-      this.sleep(1000);
-      this.showTape = true;
-      // this.componentKey += 1;
-    },
-
     selectMachine(index) {
   
       this.wordIndex = 1;
@@ -201,6 +193,7 @@ export default {
     },
 
     subimitWord() {
+      /*
       if (this.word.length == 0) { // palavra não inserida
         this.$toast.add({
           severity: "info",
@@ -209,7 +202,7 @@ export default {
           life: 3000,
         });
         return;
-      } else {
+      } else {*/
         if (this.maquinaSelecionada == null) { // máquina não selecionada
           this.$toast.add({
             severity: "info",
@@ -225,7 +218,7 @@ export default {
           this.transicoesRealizadas = [];
           this.drawTape();
         }
-      }
+      //}
 
       // console.log("Subimited");
       // console.log(this.machine.transicoes);
@@ -285,8 +278,9 @@ export default {
 
       return 0;
     },
+
     salvaTransicao(letterSearch,action){
-      const estadoSaida = this.estadoAtual;
+        const estadoSaida = this.estadoAtual;
         const simboloEntrada = letterSearch;
         //Segunda parte da transição
         const estadoDestino = action.destino;
@@ -308,7 +302,7 @@ export default {
        await this.sleep(500);        
       }
 
-      this.oneStep();
+      this.oneStep(); // força a mensagem de Aceite da palavra
     },
 
     sleep(ms) {
