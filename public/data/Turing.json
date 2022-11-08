@@ -210,8 +210,8 @@
       "estados_finais": [],
       "transicoes": {
           "q0": {
-              "0": {"destino": "q1", "direcao": "D", "gravar": "0"},
-              "1": {"destino": "q5", "direcao": "D", "gravar": "1"}
+              "0": {"destino": "q1", "direcao": "D", "gravar": "_"},
+              "1": {"destino": "q5", "direcao": "D", "gravar": "_"}
           },
           "q1": {
               "0": {"destino": "q1", "direcao": "D", "gravar": "0"},
