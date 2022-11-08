@@ -120,7 +120,7 @@
           },
           "q2": {
               "1": {"destino": "q3", "direcao": "E", "gravar": "y"},
-              "y": {"destino": "q2", "direcao": "R", "gravar": "y"},
+              "y": {"destino": "q2", "direcao": "D", "gravar": "y"},
               "_": {"destino": "qv", "direcao": "E", "gravar": "_"}
           },
           "q3": {
