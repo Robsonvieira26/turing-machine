@@ -125,7 +125,7 @@ export default {
         { name: "Teste Prof 2", value: 2},
         { name: "Teste Prof 3", value: 3},
         { name: "a^n b^m a^(n+m)", value: 4},
-        { name: "monus", value: 5},
+        { name: "Monus", value: 5},
       ],
       maquinaCalculo: false,
     };
