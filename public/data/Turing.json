@@ -52,7 +52,7 @@
         },
         "q1": {
           "a": { "destino": "q1", "direcao": "D", "gravar": "a" },
-          "y": { "destino": "q1", "direcao": "D", "gravar": "Y" },
+          "Y": { "destino": "q1", "direcao": "D", "gravar": "Y" },
           "b": { "destino": "q2", "direcao": "E", "gravar": "Y" }
         },
         "q2": {
