@@ -127,9 +127,9 @@ export default {
       maquinaSelecionada: null,
       maquinas: [
         { name: "aⁿbⁿcⁿ", value: 0 },
-        { name: "Teste Prof 1", value: 1 },
-        { name: "Teste Prof 2", value: 2 },
-        { name: "Teste Prof 3", value: 3 },
+        { name: "Teste Dia 1 Prof 1", value: 1 },
+        { name: "Teste Dia 1 Prof 2", value: 2 },
+        { name: "Teste Dia 1 Prof 3", value: 3 },
         { name: "a^n b^m a^(n+m)", value: 4 },
         { name: "Monus", value: 5 },
       ],
