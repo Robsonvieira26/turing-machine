@@ -190,6 +190,7 @@ export default {
     },
 
     subimitWord() {
+      /*
       if (this.word.length == 0) { // palavra não inserida
         this.$toast.add({
           severity: "info",
@@ -198,7 +199,7 @@ export default {
           life: 3000,
         });
         return;
-      } else {
+      } else {*/
         if (this.maquinaSelecionada == null) { // máquina não selecionada
           this.$toast.add({
             severity: "info",
@@ -214,7 +215,7 @@ export default {
           this.transicoesRealizadas = [];
           this.drawTape();
         }
-      }
+      //}
 
       // console.log("Subimited");
       // console.log(this.machine.transicoes);
