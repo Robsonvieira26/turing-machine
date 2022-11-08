@@ -68,6 +68,30 @@
       <br />
     </div> -->
   </div>
+  <div v-show="subimited == true" class="px-4">
+  <div claas="card">
+    <h1 class="flex justify-content-center">Informações</h1>
+    <Accordion>
+      <AccordionTab header="Transições Realizadas">
+        <!-- {{transicoesRealizadas}} -->
+        <div v-for="i in transicoesRealizadas" :key="i">
+          {{i}}
+        </div>
+        <!-- <Transition :transition="transicoesRealizadas" name="robson"/> -->
+      </AccordionTab>
+      <AccordionTab header="Informações Maquina">
+        <div>
+          Alfabeto: <b>{{ alfabeto }}</b><br />
+          Estado Inicial: <b>{{ estadoInicial }}</b><br />
+          Estados: <b>{{ estados }}</b><br />
+          Estados Finais: <b>{{ estadosFinais }}</b><br />
+          Símbolo Branco: <b>{{ branco }}</b><br />
+          <br />
+        </div>
+      </AccordionTab>
+    </Accordion>
+  </div>
+  </div>
 </template>
 
 <script>
@@ -78,22 +102,23 @@ export default {
   name: "HomeView",
   components: {
     Tape,
+
   },
   data() {
     return {
       componentKey: 0,
-
       //
       turingService: null,
       machines: null,
       machine: null,
       //Dados MT
+      transicoesRealizadas:[],
       alfabeto: [],
       estados: [],
       estadoInicial: "",
       estadosFinais: [],
       estadoAtual: "",
-      simbolo_branco: "",
+      branco: "",
       word: "",
       //Controle
       wordTemp: "",
@@ -142,13 +167,13 @@ export default {
 
     drawTape() {
       this.componentKey += 1;
-      console.log(this.componentKey);
+      // console.log(this.componentKey);
       this.wordTape = this.wordCopy;
       // this.sleep(2000);
     },
 
     forceRender() {
-      console.log("forceRender");
+      // console.log("forceRender");
       this.showTape = false;
       this.sleep(1000);
       this.showTape = true;
@@ -189,6 +214,7 @@ export default {
           this.wordTape = this.wordCopy;
           this.subimited = true;
           this.selectMachine(this.maquinaSelecionada.value);
+          this.transicoesRealizadas = [];
           this.drawTape();
         }
       }
@@ -202,6 +228,8 @@ export default {
       this.wordCopy = this.branco + this.word + this.branco + this.branco;
       this.wordIndex = 1;
       this.estadoAtual = this.estadoInicial;
+      this.subimited = false;
+      this.transicoesRealizadas = [];
       this.drawTape();
     },
 
@@ -223,12 +251,14 @@ export default {
 
         const index = opTransicao.indexOf(letterSearch);
         const action = transicoesEstdAtual[opTransicao[index]];
+        
         if (action == null) {
           this.mtRejeita();
           return -1;
         }
-        this.estadoAtual = action.destino;
-        console.log(this.estadoAtual);
+
+        //Add Transição
+        this.salvaTransicao(letterSearch,action)
 
         this.editWord(this.wordIndex, action.gravar);
 
@@ -241,6 +271,19 @@ export default {
       this.drawTape();
 
       return 0;
+    },
+    salvaTransicao(letterSearch,action){
+      const estadoSaida = this.estadoAtual;
+        const simboloEntrada = letterSearch;
+        //Segunda parte da transição
+        const estadoDestino = action.destino;
+        const direcao = action.direcao;
+        const simboloSaida = action.gravar;
+
+        const transicao = "δ("+estadoSaida+","+simboloEntrada+") = ("+estadoDestino+","+simboloSaida+","+direcao+")";
+        this.transicoesRealizadas.push(transicao);
+        this.estadoAtual = action.destino;
+        // console.log(transicao);
     },
 
     async allStep() {
