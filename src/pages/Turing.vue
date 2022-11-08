@@ -174,14 +174,6 @@ export default {
       // this.sleep(2000);
     },
 
-    forceRender() {
-      // console.log("forceRender");
-      this.showTape = false;
-      this.sleep(1000);
-      this.showTape = true;
-      // this.componentKey += 1;
-    },
-
     selectMachine(index) {
       this.wordIndex = 1;
       this.machine = this.machines[index];
@@ -282,8 +274,9 @@ export default {
 
       return 0;
     },
+
     salvaTransicao(letterSearch,action){
-      const estadoSaida = this.estadoAtual;
+        const estadoSaida = this.estadoAtual;
         const simboloEntrada = letterSearch;
         //Segunda parte da transição
         const estadoDestino = action.destino;
@@ -305,7 +298,7 @@ export default {
        await this.sleep(500);        
       }
 
-      this.oneStep();
+      this.oneStep(); // força a mensagem de Aceite da palavra
     },
 
     sleep(ms) {
