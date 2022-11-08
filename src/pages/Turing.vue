@@ -42,14 +42,14 @@
               @click="oneStep"
             />
           </div>
-          <!-- <div class="field">
+          <div class="field">
             <Button
               label="Transiçoes Automaticas"
               icon="pi pi-angle-double-right"
               iconPos="right"
               @click="allStep"
             />
-          </div> -->
+          </div>
           <div class="field">
             <Button
               label="Reiniciar"
@@ -128,6 +128,7 @@ export default {
         life: 3000,
       });
     },
+
     mtRejeita() {
       this.$toast.add({
         severity: "error",
@@ -140,9 +141,10 @@ export default {
     drawTape() {
       this.componentKey += 1;
       console.log(this.componentKey);
-      this.wordTape = this.word;
+      this.wordTape = this.wordCopy;
       // this.sleep(2000);
     },
+
     forceRender() {
       console.log("forceRender");
       this.showTape = false;
@@ -157,15 +159,16 @@ export default {
         this.wordIndex = 1;
       }
       this.machine = this.machines[index];
-      this.alfabeto = this.machines[index].alfabeto_entrada;
-      this.estados = this.machines[index].estados;
-      this.estadoInicial = this.machines[index].estado_inicial;
-      this.estadosFinais = this.machines[index].estados_finais;
-      this.estadoAtual = this.machines[index].estado_inicial;
-      this.wordCopy = this.word;
+      this.alfabeto = this.machine.alfabeto_entrada;
+      this.estados = this.machine.estados;
+      this.estadoInicial = this.machine.estado_inicial;
+      this.estadosFinais = this.machine.estados_finais;
+      this.estadoAtual = this.machine.estado_inicial;
+      this.wordCopy = "_" + this.word + "__";
     },
+
     subimitWord() {
-      if (this.word.length == 0) {
+      if (this.word.length == 0) { // palavra não inserida
         this.$toast.add({
           severity: "info",
           summary: "Atenção",
@@ -174,7 +177,7 @@ export default {
         });
         return;
       } else {
-        if (this.maquinaSelecionada == null) {
+        if (this.maquinaSelecionada == null) { // máquina não selecionada
           this.$toast.add({
             severity: "info",
             summary: "Atenção",
@@ -182,8 +185,8 @@ export default {
             life: 3000,
           });
           return;
-        } else {
-          this.wordTape = this.word;
+        } else { // máquina selecionada e palavra inserida
+          this.wordTape = this.wordCopy;
           this.subimited = true;
           this.selectMachine(this.maquinaSelecionada.value);
           this.drawTape();
@@ -194,25 +197,26 @@ export default {
       // console.log(this.machine.transicoes);
       // this.drawTape();
     },
+
     restart() {
-      this.word = this.wordCopy;
+      this.wordCopy = "_" + this.word + "__";
       this.wordIndex = 1;
       this.estadoAtual = this.estadoInicial;
       this.drawTape();
     },
 
     editWord(pos, letter) {
-      const auxAnt = this.word.slice(0, pos);
-      const auxPos = this.word.slice(pos + 1);
-      this.word = auxAnt + letter + auxPos;
+      const auxAnt = this.wordCopy.slice(0, pos);
+      const auxPos = this.wordCopy.slice(pos + 1);
+      this.wordCopy = auxAnt + letter + auxPos;
     },
 
     oneStep() {
       if (this.estadosFinais.indexOf(this.estadoAtual) !== -1) {
         this.mtAceita();
-        return;
+        return 1;
       } else {
-        const letterSearch = this.word[this.wordIndex];
+        const letterSearch = this.wordCopy[this.wordIndex];
 
         const transicoesEstdAtual = this.machine.transicoes[this.estadoAtual];
         const opTransicao = Object.keys(transicoesEstdAtual);
@@ -221,7 +225,7 @@ export default {
         const action = transicoesEstdAtual[opTransicao[index]];
         if (action == null) {
           this.mtRejeita();
-          return;
+          return -1;
         }
         this.estadoAtual = action.destino;
         console.log(this.estadoAtual);
@@ -235,28 +239,25 @@ export default {
         }
       }
       this.drawTape();
+
+      return 0;
     },
+
     async allStep() {
-      // while (this.estadosFinais.indexOf(this.estadoAtual) === -1) {
-      this.oneStep();
-      this.forceRender();
+      while(this.estadosFinais.indexOf(this.estadoAtual) === -1) {
+        let retorno = this.oneStep();
+        if( retorno === -1 ||  retorno === 1)
+              return;
+
+       await this.sleep(500);        
+      }
 
       this.oneStep();
-      this.forceRender();
-      this.oneStep();
-      this.forceRender();
-      // this.oneStep();
-      // this.sleep(2000);
-      // }
     },
-    sleep(milliseconds) {
-      console.log("sleep");
-      const date = Date.now();
-      let currentDate = null;
-      do {
-        currentDate = Date.now();
-      } while (currentDate - date < milliseconds);
-    },
+
+    sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
   },
 };
 </script>

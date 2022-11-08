@@ -5,7 +5,7 @@
       <div class="field grid">
         <div class="border-solid surface-border border-50 border-2 border-round"> 
           <div class="col-2">
-            {{wordLength==10 ? '_': word[i-1]}}
+            {{word[i-1]}}
           </div>
         </div>
     </div>
