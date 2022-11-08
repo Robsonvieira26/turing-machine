@@ -110,6 +110,7 @@ export default {
         { name: "Teste Prof 3", value: 3},
         { name: "a^n b^m a^(n+m)", value: 4},
       ],
+      maquinaCalculo: false,
     };
   },
   created() {
@@ -140,6 +141,15 @@ export default {
       });
     },
 
+    mtPara() {
+      this.$toast.add({
+        severity: "info",
+        summary: "Parou",
+        detail: "A maquina terminou o processamento da cadeia",
+        life: 3000,
+      });
+    },
+
     drawTape() {
       this.componentKey += 1;
       console.log(this.componentKey);
@@ -165,6 +175,9 @@ export default {
       this.estadoAtual = this.machine.estado_inicial;
       this.branco = this.machine.simbolo_branco;
       this.wordCopy = this.branco + this.word + this.branco + this.branco;
+      if (this.machine.estadosFinais.length == 0) {
+        this.maquinaCalculo = true;
+      }
     },
 
     subimitWord() {
@@ -224,8 +237,13 @@ export default {
         const index = opTransicao.indexOf(letterSearch);
         const action = transicoesEstdAtual[opTransicao[index]];
         if (action == null) {
-          this.mtRejeita();
-          return -1;
+          if (this.maquinaCalculo) {
+            this.mtPara();
+            return 1;
+          } else {
+            this.mtRejeita();
+            return -1;
+          }
         }
         this.estadoAtual = action.destino;
         console.log(this.estadoAtual);
