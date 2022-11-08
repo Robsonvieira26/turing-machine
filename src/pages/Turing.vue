@@ -33,14 +33,14 @@
               :disabled="disabled"
             />
           </div>
-          <!-- <div class="field">
+          <div class="field">
             <Button
               label="Transiçoes Automaticas"
               icon="pi pi-angle-double-right"
               iconPos="right"
               @click="allStep"
             />
-          </div> -->
+          </div>
           <div class="field">
             <Button
               label="Reiniciar"
