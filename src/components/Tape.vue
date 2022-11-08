@@ -5,7 +5,7 @@
       <div class="field grid">
         <div class="border-solid surface-border border-50 border-2 border-round"> 
           <div class="col-2">
-            {{word[i-1]}}
+            {{wordLength==10 ? '_': word[i-1]}}
           </div>
         </div>
     </div>
@@ -31,30 +31,28 @@
 
 export default {
   name: 'Tape',
-  data() {
-    return {
-     wordLength: 0,
-    };
-  },
   props: {
     word: {
       type: String,
       default: '_',
-      required: true,
+      // required: true,
     },
     wordIndex: {
       type: Number,
       default: 1,
-      required: true,
+      // required: true,
     },
     estadoAtual: {
       type: String,
       default: 'q0',
+      // required: true,
+    },
+    wordLength: {
+      type: Number,
+      default: 10,
       required: true,
     },
   },
-  created() {
-    this.wordLength = this.word.length;
-  },
+  
 }
 </script>

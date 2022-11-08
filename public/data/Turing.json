@@ -37,6 +37,34 @@
           "_": { "destino": "qf2", "direcao": "D", "gravar": "_" }
         }
       }
+    },
+    {
+      "estados": ["q0", "q1", "q2", "q3", "q4"],
+      "alfabeto_entrada": ["a", "b"],
+      "alfabeto_fita": ["a", "b", "X", "Y", "_"],
+      "estado_inicial": "q0",
+      "simbolo_branco": "_",
+      "estados_finais": ["q4"],
+      "transicoes": {
+        "q0": {
+          "a": { "destino": "q1", "direcao": "D", "gravar": "X" },
+          "Y": { "destino": "q3", "direcao": "D", "gravar": "Y" }
+        },
+        "q1": {
+          "a": { "destino": "q1", "direcao": "D", "gravar": "a" },
+          "y": { "destino": "q1", "direcao": "D", "gravar": "Y" },
+          "b": { "destino": "q2", "direcao": "E", "gravar": "Y" }
+        },
+        "q2": {
+          "Y": { "destino": "q2", "direcao": "E", "gravar": "Y" },
+          "a": { "destino": "q2", "direcao": "E", "gravar": "a" },
+          "X": { "destino": "q0", "direcao": "D", "gravar": "X" }
+        },
+        "q3": {
+          "Y": { "destino": "q3", "direcao": "D", "gravar": "Y" },
+          "_": { "destino": "q4", "direcao": "D", "gravar": "_" }
+        }
+      }
     }
   ]
 }
