@@ -183,6 +183,7 @@ export default {
     },
 
     selectMachine(index) {
+  
       this.wordIndex = 1;
       this.machine = this.machines[index];
       this.alfabeto = this.machine.alfabeto_entrada;
@@ -191,9 +192,11 @@ export default {
       this.estadosFinais = this.machine.estados_finais;
       this.estadoAtual = this.machine.estado_inicial;
       this.branco = this.machine.simbolo_branco;
-      this.wordCopy = this.branco + this.word + this.branco + this.branco;
-      if (this.machine.estadosFinais.length == 0) {
+      this.wordCopy = this.branco + this.word + this.branco + this.branco+this.branco + this.branco+this.branco + this.branco;
+
+      if (this.machine.estadosFinais==undefined) {
         this.maquinaCalculo = true;
+        console.log("maquina de calculo");
       }
     },
 
