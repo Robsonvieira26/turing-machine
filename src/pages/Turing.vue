@@ -59,14 +59,6 @@
         :key="componentKey"
       />
     </div>
-    <!-- <div>
-      Alfabeto:{{ alfabeto }}<br />
-      Estado Inicial:{{ estadoInicial }}<br />
-      Estados: {{ estados }}<br />
-      Estados Finais:{{ estadosFinais }}<br />
-      Símbolo Branco:{{ branco }}<br />
-      <br />
-    </div> -->
   </div>
   <div v-show="subimited == true" class="px-4">
   <div claas="card">
@@ -77,7 +69,6 @@
         <div v-for="i in transicoesRealizadas" :key="i">
           {{i}}
         </div>
-        <!-- <Transition :transition="transicoesRealizadas" name="robson"/> -->
       </AccordionTab>
       <AccordionTab header="Informações Maquina">
         <div>
