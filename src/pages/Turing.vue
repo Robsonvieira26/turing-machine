@@ -6,16 +6,6 @@
   <!-- <br /> -->
   <div class="px-4">
     <div class="card">
-      <!-- Alfabeto:{{ alfabeto }}<br />
-    Estado Inicial:{{ estadoInicial }}<br />
-    Estados:{{ estados }}<br />
-    Estados Finais:{{ estadosFinais }}<br />
-    <b>Estado Atual: {{ estadoAtual }}</b>
-    <br />
-    <b>{{ word }} - {{ wordIndex }}</b
-      ><br /> -->
-      <!-- {{ word[wordIndex] }} -->
-
       <div class="formgroup-inline">
         <div class="field">
           <Dropdown
@@ -69,6 +59,14 @@
         :key="componentKey"
       />
     </div>
+    <!-- <div>
+      Alfabeto:{{ alfabeto }}<br />
+      Estado Inicial:{{ estadoInicial }}<br />
+      Estados: {{ estados }}<br />
+      Estados Finais:{{ estadosFinais }}<br />
+      Símbolo Branco:{{ branco }}<br />
+      <br />
+    </div> -->
   </div>
 </template>
 
@@ -95,6 +93,7 @@ export default {
       estadoInicial: "",
       estadosFinais: [],
       estadoAtual: "",
+      simbolo_branco: "",
       word: "",
       //Controle
       wordTemp: "",
@@ -107,6 +106,9 @@ export default {
       maquinas: [
         { name: "aⁿbⁿcⁿ", value: 0 },
         { name: "Teste Prof 1", value: 1 },
+        { name: "Teste Prof 2", value: 2},
+        { name: "Teste Prof 3", value: 3},
+        { name: "a^n b^m a^(n+m)", value: 4},
       ],
     };
   },
@@ -154,17 +156,15 @@ export default {
     },
 
     selectMachine(index) {
-      this.wordIndex = 0;
-      if (index == 0) {
-        this.wordIndex = 1;
-      }
+      this.wordIndex = 1;
       this.machine = this.machines[index];
       this.alfabeto = this.machine.alfabeto_entrada;
       this.estados = this.machine.estados;
       this.estadoInicial = this.machine.estado_inicial;
       this.estadosFinais = this.machine.estados_finais;
       this.estadoAtual = this.machine.estado_inicial;
-      this.wordCopy = "_" + this.word + "__";
+      this.branco = this.machine.simbolo_branco;
+      this.wordCopy = this.branco + this.word + this.branco + this.branco;
     },
 
     subimitWord() {
@@ -199,7 +199,7 @@ export default {
     },
 
     restart() {
-      this.wordCopy = "_" + this.word + "__";
+      this.wordCopy = this.branco + this.word + this.branco + this.branco;
       this.wordIndex = 1;
       this.estadoAtual = this.estadoInicial;
       this.drawTape();

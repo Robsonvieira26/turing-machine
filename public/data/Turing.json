@@ -65,6 +65,141 @@
           "_": { "destino": "q4", "direcao": "D", "gravar": "_" }
         }
       }
+    },
+    {
+      "estados": ["q0","q1","q2","q3","q4","q5"],
+      "alfabeto_entrada": ["a","b","c"],
+      "alfabeto_fita": ["a","b","c","x","y","z","_"],
+      "estado_inicial": "q0",
+      "simbolo_branco": "_",
+      "estados_finais": ["q5"],
+      "transicoes": {
+          "q0": {
+              "a": {"destino": "q1", "direcao": "D", "gravar": "x"},
+              "y": {"destino": "q4", "direcao": "D", "gravar": "y"}
+          },
+          "q1": {
+              "a": {"destino": "q1", "direcao": "D", "gravar": "a"},
+              "b": {"destino": "q2", "direcao": "D", "gravar": "y"},
+              "y": {"destino": "q1", "direcao": "D", "gravar": "y"}
+          },
+          "q2": {
+              "b": {"destino": "q2", "direcao": "D", "gravar": "b"},
+              "c": {"destino": "q3", "direcao": "E", "gravar": "z"},
+              "z": {"destino": "q2", "direcao": "D", "gravar": "z"}
+          },
+          "q3": {
+              "b": {"destino": "q3", "direcao": "E", "gravar": "b"},
+              "y": {"destino": "q3", "direcao": "E", "gravar": "y"},
+              "a": {"destino": "q3", "direcao": "E", "gravar": "a"},
+              "x": {"destino": "q0", "direcao": "D", "gravar": "x"},
+              "z": {"destino": "q3", "direcao": "E", "gravar": "z"}
+          },
+          "q4": {
+              "y": {"destino": "q4", "direcao": "D", "gravar": "y"},
+              "z": {"destino": "q4", "direcao": "D", "gravar": "z"},
+              "_": {"destino": "q5", "direcao": "D", "gravar": "_"}
+          }
+      }
+    },
+    {
+      "estados": ["q0","q1","q2","q3","q4","qf","qv","q>=","q<"],
+      "alfabeto_entrada": ["1","0"],
+      "alfabeto_fita": ["1","0","x","y","_"],
+      "estado_inicial": "q0",
+      "simbolo_branco": "_",
+      "estados_finais": ["q>=", "q<"],
+      "transicoes": {
+          "q0": {
+              "1": {"destino": "q1", "direcao": "D", "gravar": "x"},
+              "0": {"destino": "q4", "direcao": "D", "gravar": "0"}
+          },
+          "q1": {
+              "1": {"destino": "q1", "direcao": "D", "gravar": "1"},
+              "0": {"destino": "q2", "direcao": "D", "gravar": "0"}
+          },
+          "q2": {
+              "1": {"destino": "q3", "direcao": "E", "gravar": "y"},
+              "y": {"destino": "q2", "direcao": "R", "gravar": "y"},
+              "_": {"destino": "qv", "direcao": "E", "gravar": "_"}
+          },
+          "q3": {
+              "y": {"destino": "q3", "direcao": "E", "gravar": "y"},
+              "0": {"destino": "q3", "direcao": "E", "gravar": "0"},
+              "1": {"destino": "q3", "direcao": "E", "gravar": "1"},
+              "x": {"destino": "q0", "direcao": "D", "gravar": "x"}
+          },
+          "q4": {
+              "y": {"destino": "q4", "direcao": "D", "gravar": "y"},
+              "1": {"destino": "qf", "direcao": "E", "gravar": "1"},
+              "_": {"destino": "qv", "direcao": "E", "gravar": "_"}
+          },
+          "qf": {
+              "0": {"destino": "qf", "direcao": "E", "gravar": "0"},
+              "y": {"destino": "qf", "direcao": "E", "gravar": "1"},
+              "x": {"destino": "qf", "direcao": "E", "gravar": "1"},
+              "_": {"destino": "q<", "direcao": "D", "gravar": "_"}
+          },
+          "qv": {
+              "y": {"destino": "qv", "direcao": "E", "gravar": "1"},
+              "x": {"destino": "qv", "direcao": "E", "gravar": "1"},
+              "0": {"destino": "qv", "direcao": "E", "gravar": "0"},
+              "1": {"destino": "qv", "direcao": "E", "gravar": "1"},
+              "_": {"destino": "q>=", "direcao": "D", "gravar": "_"}
+          }
+      }
+    },
+    {
+      "estados": ["q0","q1","q2","q3","q4","q5","q6","q7","q8","qf1","qf2"],
+      "alfabeto_entrada": ["a","b"],
+      "alfabeto_fita": ["a","b","X","_"],
+      "estado_inicial": "q0",
+      "simbolo_branco": "_",
+      "estados_finais": ["qf1","qf2"],
+      "transicoes": {
+          "q0": {
+              "a": {"destino": "q1", "direcao": "D", "gravar": "a"},
+              "b": {"destino": "q2", "direcao": "D", "gravar": "b"},
+              "_": {"destino": "qf1", "direcao": "D", "gravar": "_"}
+          },
+          "q1": {
+              "a": {"destino": "q1", "direcao": "D", "gravar": "a"},
+              "b": {"destino": "q2", "direcao": "D", "gravar": "b"},
+              "_": {"destino": "q4", "direcao": "E", "gravar": "_"}
+          },
+          "q2": {
+              "a": {"destino": "q3", "direcao": "D", "gravar": "a"},
+              "b": {"destino": "q2", "direcao": "D", "gravar": "b"}
+          },
+          "q3": {
+              "a": {"destino": "q3", "direcao": "D", "gravar": "a"},
+              "_": {"destino": "q4", "direcao": "E", "gravar": "_"}
+          },
+          "q4": {
+              "a": {"destino": "q4", "direcao": "E", "gravar": "a"},
+              "b": {"destino": "q4", "direcao": "E", "gravar": "b"},
+              "_": {"destino": "q5", "direcao": "D", "gravar": "_"}
+          },
+          "q5": {
+              "a": {"destino": "q6", "direcao": "D", "gravar": "X"},
+              "b": {"destino": "q6", "direcao": "D", "gravar": "X"},
+              "X": {"destino": "qf2", "direcao": "D", "gravar": "X"}
+          },
+          "q6": {
+              "a": {"destino": "q6", "direcao": "D", "gravar": "a"},
+              "b": {"destino": "q6", "direcao": "D", "gravar": "b"},
+              "X": {"destino": "q7", "direcao": "E", "gravar": "X"},
+              "_": {"destino": "q7", "direcao": "E", "gravar": "_"}
+          },
+          "q7": {
+              "a": {"destino": "q8", "direcao": "E", "gravar": "X"}
+          },
+          "q8": {
+              "a": {"destino": "q8", "direcao": "E", "gravar": "a"},
+              "b": {"destino": "q8", "direcao": "E", "gravar": "b"},
+              "X": {"destino": "q5", "direcao": "D", "gravar": "X"}
+          }
+      }
     }
   ]
 }
