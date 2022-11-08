@@ -39,6 +39,7 @@
               icon="pi pi-angle-double-right"
               iconPos="right"
               @click="allStep"
+              :disabled="disabled"
             />
           </div>
           <div class="field">
@@ -127,10 +128,10 @@ export default {
       maquinaSelecionada: null,
       maquinas: [
         { name: "aⁿbⁿcⁿ", value: 0 },
-        { name: "Teste D1 1 - a^(n)b^(n)", value: 1 },
-        { name: "Teste D1 2 - a^(n)b^(n)c^(n)", value: 2 },
+        { name: "Teste D1 1 - aⁿbⁿ", value: 1 },
+        { name: "Teste D1 2 - aⁿbⁿcⁿ", value: 2 },
         { name: "Teste D1 3", value: 3 },
-        { name: "a^n b^m a^(n+m)", value: 4 },
+        { name: "aⁿbᵐaⁿ⁺ᵐ", value: 4 },
         { name: "Monus", value: 5 },
         { name: "Teste D2 1", value: 6},
       ],
@@ -203,13 +204,14 @@ export default {
         this.branco +
         this.branco;
       console.log(this.machine.estadosFinais);
-      if (this.machine.estadosFinais == undefined) {
+      if (this.machine.estadosFinais === []) {
         this.maquinaCalculo = true;
         console.log("maquina de calculo");
       }
     },
 
     submitWord() {
+      this.disabled = false;
       if (this.maquinaSelecionada == null) {
         // máquina não selecionada
         this.$toast.add({
