@@ -329,6 +329,7 @@ export default {
     },
 
     async allStep() {
+      this.disabled = true;
       while (this.estadosFinais.indexOf(this.estadoAtual) === -1) {
         let retorno = this.oneStep();
         if (retorno === -1 || retorno === 1) return;
