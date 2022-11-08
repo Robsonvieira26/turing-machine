@@ -127,12 +127,12 @@ export default {
       maquinaSelecionada: null,
       maquinas: [
         { name: "aⁿbⁿcⁿ", value: 0 },
-        { name: "Teste Dia 1 Prof 1", value: 1 },
-        { name: "Teste Dia 1 Prof 2", value: 2 },
-        { name: "Teste Dia 1 Prof 3", value: 3 },
+        { name: "Teste D1 1 - a^(n)b^(n)", value: 1 },
+        { name: "Teste D1 2 - a^(n)b^(n)c^(n)", value: 2 },
+        { name: "Teste D1 3", value: 3 },
         { name: "a^n b^m a^(n+m)", value: 4 },
         { name: "Monus", value: 5 },
-        { name: "Teste 1 08/11", value: 6},
+        { name: "Teste D2 1", value: 6},
       ],
       maquinaCalculo: false,
     };
