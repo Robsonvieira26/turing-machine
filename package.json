@@ -1,10 +1,6 @@
 {
-  "name": "sakai-vue",
+  "name": "turing-machine",
   "version": "3.4.2-SNAPSHOT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/primefaces/sakai-vue.git"
-  },
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -34,12 +30,5 @@
     "vue": "3.2.9",
     "vue-router": "^4.0.0-0",
     "vue-worker": "^1.2.1"
-  },
-  "description": "Visit [Sakai Vue](https://www.primefaces.org/sakai-vue) website for a live preview.",
-  "bugs": {
-    "url": "https://github.com/primefaces/sakai-vue/issues"
-  },
-  "homepage": "https://github.com/primefaces/sakai-vue#readme",
-  "main": ".eslintrc.js",
-  "author": ""
+  }
 }

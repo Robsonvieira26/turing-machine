@@ -204,7 +204,8 @@ export default {
         this.branco +
         this.branco;
       console.log(this.machine.estadosFinais);
-      if (this.machine.estadosFinais === []) {
+
+      if (this.machine.estadosFinais === [] || index == 5) {
         this.maquinaCalculo = true;
         console.log("maquina de calculo");
       }
