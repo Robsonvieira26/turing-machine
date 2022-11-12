@@ -2,7 +2,7 @@
 <template>
   <!-- {{ machine }} -->
   <Toast />
-  <h1 class="flex justify-content-center">Maquina De Turing</h1>
+  <!-- <h1 class="flex justify-content-center">Maquina De Turing</h1> -->
   <!-- <br /> -->
   <div class="px-4">
     <div class="card">

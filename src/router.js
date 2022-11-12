@@ -1,10 +1,23 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import App from "./App.vue";
 
 const routes = [
   {
     path: "/",
-    name: "Turing",
-    component: () => import("./pages/Turing.vue"),
+    name: "app",
+    component: App,
+    children: [
+      {
+        path: "/",
+        name: "Home",
+        component: () => import("./pages/Turing.vue"),
+      },
+      {
+        path: "/sobre",
+        name: "sobre",
+        component: () => import("./pages/Sobre.vue"),
+      },
+    ],
   },
 ];
 
