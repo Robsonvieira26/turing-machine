@@ -35,9 +35,14 @@ export default {
       mobileMenuActive: false,
       menu: [
         {
-          label: "Home",
+          // label: "Home",
           items: [
             { label: "MT - Uma fita", icon: "pi pi-fw pi-home", to: "/" },
+            {
+              label: "MT - Duas fitas",
+              icon: "pi pi-fw pi-home",
+              to: "/duasFitas",
+            },
             { label: "Sobre", icon: "pi pi-fw pi-info-circle", to: "/sobre" },
 
             // { label: 'Dashbord', icon: 'pi pi-fw pi-home', to: '/dashborad' }
