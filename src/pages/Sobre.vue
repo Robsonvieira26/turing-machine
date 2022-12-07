@@ -22,9 +22,8 @@
           class="align-self-center flex align-items-center justify-content-center font-bold text-white border-round m-2"
           style="min-width: 100px"
         >
-          <router-link :to="i.githubLink" class="text-blue-500"
-            >GitHub</router-link
-          >
+          <a :href="i.githubLink" target="blank" class="text-blue-500"
+            >GitHub</a >
         </div>
       </div>
     </div>
