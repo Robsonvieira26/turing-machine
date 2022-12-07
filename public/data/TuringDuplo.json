@@ -1,0 +1,77 @@
+{
+    "data": [
+        {
+            "nome": "a^i b a^i, i>= 0",
+            "estados": ["q0", "q1", "q2", "q3"],
+            "alfabeto_entrada": ["a", "b"],
+            "alfabeto_fita": ["a", "b", "_"],
+            "estado_inicial": "q0",
+            "simbolo_branco": "_",
+            "estados_finais": ["q3"],
+            "transicoes": {
+                "q0": {
+                    "__": {
+                        "destino": "q1",
+                        "f1": {
+                            "direcao": "D",
+                            "gravar": "_"
+                        },
+                        "f2": {
+                            "direcao": "D",
+                            "gravar": "_"
+                        }
+                    }
+                },
+                "q1": {
+                    "a_": {
+                        "destino": "q1",
+                        "f1": {
+                            "direcao": "D",
+                            "gravar": "a"
+                        },
+                        "f2": {
+                            "direcao": "D",
+                            "gravar": "a"
+                        }
+                    },
+                    "b_": {
+                        "destino": "q2",
+                        "f1": {
+                            "direcao": "D",
+                            "gravar": "b"
+                        },
+                        "f2": {
+                            "direcao": "E",
+                            "gravar": "_"
+                        }
+                    }
+                },
+                "q2": {
+                    "aa": {
+                        "destino": "q2",
+                        "f1": {
+                            "direcao": "D",
+                            "gravar": "a"
+                        },
+                        "f2": {
+                            "direcao": "E",
+                            "gravar": "a"
+                        }
+                    },
+            
+                    "__": {
+                        "destino": "q3",
+                        "f1": {
+                            "direcao": "D",
+                            "gravar": "_"
+                        },
+                        "f2": {
+                            "direcao": "D",
+                            "gravar": "_"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
