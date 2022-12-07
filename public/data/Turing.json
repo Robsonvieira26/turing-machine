@@ -1,292 +1,299 @@
 {
-  "data": [
-    {
-      "estados": ["q1", "q2", "q3", "q4", "q5", "q6", "qf1", "qf2"],
-      "alfabeto_entrada": ["a", "b", "c"],
-      "alfabeto_fita": ["a", "b", "c", "X", "_"],
-      "estado_inicial": "q1",
-      "simbolo_branco": "_",
-      "estados_finais": ["qf1", "qf2"],
-      "transicoes": {
-        "q1": {
-          "a": { "destino": "q2", "direcao": "D", "gravar": "X" },
-          "_": { "destino": "qf1", "direcao": "D", "gravar": "_" }
-        },
-        "q2": {
-          "a": { "destino": "q2", "direcao": "D", "gravar": "a" },
-          "b": { "destino": "q3", "direcao": "D", "gravar": "X" },
-          "X": { "destino": "q2", "direcao": "D", "gravar": "X" }
-        },
-        "q3": {
-          "b": { "destino": "q3", "direcao": "D", "gravar": "b" },
-          "c": { "destino": "q4", "direcao": "E", "gravar": "X" },
-          "X": { "destino": "q3", "direcao": "D", "gravar": "X" }
-        },
-        "q4": {
-          "a": { "destino": "q5", "direcao": "E", "gravar": "a" },
-          "b": { "destino": "q4", "direcao": "E", "gravar": "b" },
-          "X": { "destino": "q4", "direcao": "E", "gravar": "X" },
-          "_": { "destino": "q6", "direcao": "D", "gravar": "_" }
-        },
-        "q5": {
-          "a": { "destino": "q5", "direcao": "E", "gravar": "a" },
-          "X": { "destino": "q1", "direcao": "D", "gravar": "X" }
-        },
-        "q6": {
-          "X": { "destino": "q6", "direcao": "D", "gravar": "X" },
-          "_": { "destino": "qf2", "direcao": "D", "gravar": "_" }
-        }
-      }
-    },
-    {
-      "estados": ["q0", "q1", "q2", "q3", "q4"],
-      "alfabeto_entrada": ["a", "b"],
-      "alfabeto_fita": ["a", "b", "X", "Y", "_"],
-      "estado_inicial": "q0",
-      "simbolo_branco": "_",
-      "estados_finais": ["q4"],
-      "transicoes": {
-        "q0": {
-          "a": { "destino": "q1", "direcao": "D", "gravar": "X" },
-          "Y": { "destino": "q3", "direcao": "D", "gravar": "Y" }
-        },
-        "q1": {
-          "a": { "destino": "q1", "direcao": "D", "gravar": "a" },
-          "Y": { "destino": "q1", "direcao": "D", "gravar": "Y" },
-          "b": { "destino": "q2", "direcao": "E", "gravar": "Y" }
-        },
-        "q2": {
-          "Y": { "destino": "q2", "direcao": "E", "gravar": "Y" },
-          "a": { "destino": "q2", "direcao": "E", "gravar": "a" },
-          "X": { "destino": "q0", "direcao": "D", "gravar": "X" }
-        },
-        "q3": {
-          "Y": { "destino": "q3", "direcao": "D", "gravar": "Y" },
-          "_": { "destino": "q4", "direcao": "D", "gravar": "_" }
-        }
-      }
-    },
-    {
-      "estados": ["q0","q1","q2","q3","q4","q5"],
-      "alfabeto_entrada": ["a","b","c"],
-      "alfabeto_fita": ["a","b","c","x","y","z","_"],
-      "estado_inicial": "q0",
-      "simbolo_branco": "_",
-      "estados_finais": ["q5"],
-      "transicoes": {
-          "q0": {
-              "a": {"destino": "q1", "direcao": "D", "gravar": "x"},
-              "y": {"destino": "q4", "direcao": "D", "gravar": "y"}
-          },
-          "q1": {
-              "a": {"destino": "q1", "direcao": "D", "gravar": "a"},
-              "b": {"destino": "q2", "direcao": "D", "gravar": "y"},
-              "y": {"destino": "q1", "direcao": "D", "gravar": "y"}
-          },
-          "q2": {
-              "b": {"destino": "q2", "direcao": "D", "gravar": "b"},
-              "c": {"destino": "q3", "direcao": "E", "gravar": "z"},
-              "z": {"destino": "q2", "direcao": "D", "gravar": "z"}
-          },
-          "q3": {
-              "b": {"destino": "q3", "direcao": "E", "gravar": "b"},
-              "y": {"destino": "q3", "direcao": "E", "gravar": "y"},
-              "a": {"destino": "q3", "direcao": "E", "gravar": "a"},
-              "x": {"destino": "q0", "direcao": "D", "gravar": "x"},
-              "z": {"destino": "q3", "direcao": "E", "gravar": "z"}
-          },
-          "q4": {
-              "y": {"destino": "q4", "direcao": "D", "gravar": "y"},
-              "z": {"destino": "q4", "direcao": "D", "gravar": "z"},
-              "_": {"destino": "q5", "direcao": "D", "gravar": "_"}
-          }
-      }
-    },
-    {
-      "estados": ["q0","q1","q2","q3","q4","qf","qv","q>=","q<"],
-      "alfabeto_entrada": ["1","0"],
-      "alfabeto_fita": ["1","0","x","y","_"],
-      "estado_inicial": "q0",
-      "simbolo_branco": "_",
-      "estados_finais": ["q>=", "q<"],
-      "transicoes": {
-          "q0": {
-              "1": {"destino": "q1", "direcao": "D", "gravar": "x"},
-              "0": {"destino": "q4", "direcao": "D", "gravar": "0"}
-          },
-          "q1": {
-              "1": {"destino": "q1", "direcao": "D", "gravar": "1"},
-              "0": {"destino": "q2", "direcao": "D", "gravar": "0"}
-          },
-          "q2": {
-              "1": {"destino": "q3", "direcao": "E", "gravar": "y"},
-              "y": {"destino": "q2", "direcao": "D", "gravar": "y"},
-              "_": {"destino": "qv", "direcao": "E", "gravar": "_"}
-          },
-          "q3": {
-              "y": {"destino": "q3", "direcao": "E", "gravar": "y"},
-              "0": {"destino": "q3", "direcao": "E", "gravar": "0"},
-              "1": {"destino": "q3", "direcao": "E", "gravar": "1"},
-              "x": {"destino": "q0", "direcao": "D", "gravar": "x"}
-          },
-          "q4": {
-              "y": {"destino": "q4", "direcao": "D", "gravar": "y"},
-              "1": {"destino": "qf", "direcao": "E", "gravar": "1"},
-              "_": {"destino": "qv", "direcao": "E", "gravar": "_"}
-          },
-          "qf": {
-              "0": {"destino": "qf", "direcao": "E", "gravar": "0"},
-              "y": {"destino": "qf", "direcao": "E", "gravar": "1"},
-              "x": {"destino": "qf", "direcao": "E", "gravar": "1"},
-              "_": {"destino": "q<", "direcao": "D", "gravar": "_"}
-          },
-          "qv": {
-              "y": {"destino": "qv", "direcao": "E", "gravar": "1"},
-              "x": {"destino": "qv", "direcao": "E", "gravar": "1"},
-              "0": {"destino": "qv", "direcao": "E", "gravar": "0"},
-              "1": {"destino": "qv", "direcao": "E", "gravar": "1"},
-              "_": {"destino": "q>=", "direcao": "D", "gravar": "_"}
-          }
-      }
-    },
-    {
-      "estados": ["q0","q1","q2","q3","q4","q5","q6","q7","q8","qf1","qf2"],
-      "alfabeto_entrada": ["a","b"],
-      "alfabeto_fita": ["a","b","X","_"],
-      "estado_inicial": "q0",
-      "simbolo_branco": "_",
-      "estados_finais": ["qf1","qf2"],
-      "transicoes": {
-          "q0": {
-              "a": {"destino": "q1", "direcao": "D", "gravar": "a"},
-              "b": {"destino": "q2", "direcao": "D", "gravar": "b"},
-              "_": {"destino": "qf1", "direcao": "D", "gravar": "_"}
-          },
-          "q1": {
-              "a": {"destino": "q1", "direcao": "D", "gravar": "a"},
-              "b": {"destino": "q2", "direcao": "D", "gravar": "b"},
-              "_": {"destino": "q4", "direcao": "E", "gravar": "_"}
-          },
-          "q2": {
-              "a": {"destino": "q3", "direcao": "D", "gravar": "a"},
-              "b": {"destino": "q2", "direcao": "D", "gravar": "b"}
-          },
-          "q3": {
-              "a": {"destino": "q3", "direcao": "D", "gravar": "a"},
-              "_": {"destino": "q4", "direcao": "E", "gravar": "_"}
-          },
-          "q4": {
-              "a": {"destino": "q4", "direcao": "E", "gravar": "a"},
-              "b": {"destino": "q4", "direcao": "E", "gravar": "b"},
-              "_": {"destino": "q5", "direcao": "D", "gravar": "_"}
-          },
-          "q5": {
-              "a": {"destino": "q6", "direcao": "D", "gravar": "X"},
-              "b": {"destino": "q6", "direcao": "D", "gravar": "X"},
-              "X": {"destino": "qf2", "direcao": "D", "gravar": "X"}
-          },
-          "q6": {
-              "a": {"destino": "q6", "direcao": "D", "gravar": "a"},
-              "b": {"destino": "q6", "direcao": "D", "gravar": "b"},
-              "X": {"destino": "q7", "direcao": "E", "gravar": "X"},
-              "_": {"destino": "q7", "direcao": "E", "gravar": "_"}
-          },
-          "q7": {
-              "a": {"destino": "q8", "direcao": "E", "gravar": "X"}
-          },
-          "q8": {
-              "a": {"destino": "q8", "direcao": "E", "gravar": "a"},
-              "b": {"destino": "q8", "direcao": "E", "gravar": "b"},
-              "X": {"destino": "q5", "direcao": "D", "gravar": "X"}
-          }
-      }
-    },
-    {
-      "estados": ["q0","q1","q2","q3","q4","q5","q6"],
-      "alfabeto_entrada": ["0","1"],
-      "alfabeto_fita": ["0","1","_"],
-      "estado_inicial": "q0",
-      "simbolo_branco": "_",
-      "estados_finais": [],
-      "transicoes": {
-          "q0": {
-              "0": {"destino": "q1", "direcao": "D", "gravar": "_"},
-              "1": {"destino": "q5", "direcao": "D", "gravar": "_"}
-          },
-          "q1": {
-              "0": {"destino": "q1", "direcao": "D", "gravar": "0"},
-              "1": {"destino": "q2", "direcao": "D", "gravar": "1"}
-          },
-          "q2": {
-              "0": {"destino": "q3", "direcao": "E", "gravar": "1"},
-              "1": {"destino": "q2", "direcao": "D", "gravar": "1"},
-              "_": {"destino": "q4", "direcao": "E", "gravar": "_"}
-          },
-          "q3": {
-              "0": {"destino": "q3", "direcao": "E", "gravar": "0"},
-              "1": {"destino": "q3", "direcao": "E", "gravar": "1"},
-              "_": {"destino": "q0", "direcao": "D", "gravar": "_"}
-          },
-          "q4": {
-              "0": {"destino": "q4", "direcao": "E", "gravar": "0"},
-              "1": {"destino": "q4", "direcao": "E", "gravar": "_"},
-              "_": {"destino": "q6", "direcao": "D", "gravar": "_"}
-          },
-          "q5": {
-              "0": {"destino": "q5", "direcao": "D", "gravar": "_"},
-              "1": {"destino": "q5", "direcao": "D", "gravar": "_"},
-              "_": {"destino": "q6", "direcao": "D", "gravar": "_"}
-          }
-      }
-    },
-    {
-      "estados": ["q0","q1","q2","q3","q4","q5","q6","q7"],
-      "alfabeto_entrada": ["a","b","c"],
-      "alfabeto_fita": ["a","b","c","x","y","_"],
-      "estado_inicial": "q0",
-      "simbolo_branco": "_",
-      "estados_finais": ["q7"],
-      "transicoes": {
-          "q0": {
-              "a": {"destino": "q1", "direcao": "D", "gravar": "x"},
-              "b": {"destino": "q2", "direcao": "D", "gravar": "y"},
-              "c": {"destino": "q6", "direcao": "D", "gravar": "c"}
-          },
-          "q1": {
-              "a": {"destino": "q1", "direcao": "D", "gravar": "a"},
-              "b": {"destino": "q1", "direcao": "D", "gravar": "b"},
-              "c": {"destino": "q1", "direcao": "D", "gravar": "c"},
-              "_": {"destino": "q3", "direcao": "E", "gravar": "_"},
-              "x": {"destino": "q3", "direcao": "E", "gravar": "x"},
-              "y": {"destino": "q3", "direcao": "E", "gravar": "y"}
-          },
-          "q2": {
-              "a": {"destino": "q2", "direcao": "D", "gravar": "a"},
-              "b": {"destino": "q2", "direcao": "D", "gravar": "b"},
-              "c": {"destino": "q2", "direcao": "D", "gravar": "c"},
-              "_": {"destino": "q4", "direcao": "E", "gravar": "_"},
-              "x": {"destino": "q4", "direcao": "E", "gravar": "x"},
-              "y": {"destino": "q4", "direcao": "E", "gravar": "y"}
-          },
-          "q3": {
-              "a": {"destino": "q5", "direcao": "E", "gravar": "x"}
-          },
-          "q4": {
-              "b": {"destino": "q5", "direcao": "E", "gravar": "y"}
-          },
-          "q5": {
-              "a": {"destino": "q5", "direcao": "E", "gravar": "a"},
-              "b": {"destino": "q5", "direcao": "E", "gravar": "b"},
-              "c": {"destino": "q5", "direcao": "E", "gravar": "c"},
-              "x": {"destino": "q0", "direcao": "D", "gravar": "x"},
-              "y": {"destino": "q0", "direcao": "D", "gravar": "y"}
-          },
-          "q6": {
-              "x": {"destino": "q6", "direcao": "D", "gravar": "x"},
-              "y": {"destino": "q6", "direcao": "D", "gravar": "y"},
-              "_": {"destino": "q7", "direcao": "E", "gravar": "_"}
-          }
-      }
-    }
-  ]
+  	"data": [
+    	{
+			"nome": "aⁿbⁿcⁿ",
+			"estados": ["q1", "q2", "q3", "q4", "q5", "q6", "qf1", "qf2"],
+			"alfabeto_entrada": ["a", "b", "c"],
+			"alfabeto_fita": ["a", "b", "c", "X", "_"],
+			"estado_inicial": "q1",
+			"simbolo_branco": "_",
+			"estados_finais": ["qf1", "qf2"],
+			"transicoes": {
+				"q1": {
+				"a": { "destino": "q2", "direcao": "D", "gravar": "X" },
+				"_": { "destino": "qf1", "direcao": "D", "gravar": "_" }
+				},
+				"q2": {
+				"a": { "destino": "q2", "direcao": "D", "gravar": "a" },
+				"b": { "destino": "q3", "direcao": "D", "gravar": "X" },
+				"X": { "destino": "q2", "direcao": "D", "gravar": "X" }
+				},
+				"q3": {
+				"b": { "destino": "q3", "direcao": "D", "gravar": "b" },
+				"c": { "destino": "q4", "direcao": "E", "gravar": "X" },
+				"X": { "destino": "q3", "direcao": "D", "gravar": "X" }
+				},
+				"q4": {
+				"a": { "destino": "q5", "direcao": "E", "gravar": "a" },
+				"b": { "destino": "q4", "direcao": "E", "gravar": "b" },
+				"X": { "destino": "q4", "direcao": "E", "gravar": "X" },
+				"_": { "destino": "q6", "direcao": "D", "gravar": "_" }
+				},
+				"q5": {
+				"a": { "destino": "q5", "direcao": "E", "gravar": "a" },
+				"X": { "destino": "q1", "direcao": "D", "gravar": "X" }
+				},
+				"q6": {
+				"X": { "destino": "q6", "direcao": "D", "gravar": "X" },
+				"_": { "destino": "qf2", "direcao": "D", "gravar": "_" }
+				}
+			}
+		},
+		{
+			"nome": "Teste D1 1 - aⁿbⁿ",
+			"estados": ["q0", "q1", "q2", "q3", "q4"],
+			"alfabeto_entrada": ["a", "b"],
+			"alfabeto_fita": ["a", "b", "X", "Y", "_"],
+			"estado_inicial": "q0",
+			"simbolo_branco": "_",
+			"estados_finais": ["q4"],
+			"transicoes": {
+				"q0": {
+				"a": { "destino": "q1", "direcao": "D", "gravar": "X" },
+				"Y": { "destino": "q3", "direcao": "D", "gravar": "Y" }
+				},
+				"q1": {
+				"a": { "destino": "q1", "direcao": "D", "gravar": "a" },
+				"Y": { "destino": "q1", "direcao": "D", "gravar": "Y" },
+				"b": { "destino": "q2", "direcao": "E", "gravar": "Y" }
+				},
+				"q2": {
+				"Y": { "destino": "q2", "direcao": "E", "gravar": "Y" },
+				"a": { "destino": "q2", "direcao": "E", "gravar": "a" },
+				"X": { "destino": "q0", "direcao": "D", "gravar": "X" }
+				},
+				"q3": {
+				"Y": { "destino": "q3", "direcao": "D", "gravar": "Y" },
+				"_": { "destino": "q4", "direcao": "D", "gravar": "_" }
+				}
+			}
+		},
+		{
+			"nome": "Teste D1 2 - aⁿbⁿcⁿ",
+			"estados": ["q0","q1","q2","q3","q4","q5"],
+			"alfabeto_entrada": ["a","b","c"],
+			"alfabeto_fita": ["a","b","c","x","y","z","_"],
+			"estado_inicial": "q0",
+			"simbolo_branco": "_",
+			"estados_finais": ["q5"],
+			"transicoes": {
+				"q0": {
+					"a": {"destino": "q1", "direcao": "D", "gravar": "x"},
+					"y": {"destino": "q4", "direcao": "D", "gravar": "y"}
+				},
+				"q1": {
+					"a": {"destino": "q1", "direcao": "D", "gravar": "a"},
+					"b": {"destino": "q2", "direcao": "D", "gravar": "y"},
+					"y": {"destino": "q1", "direcao": "D", "gravar": "y"}
+				},
+				"q2": {
+					"b": {"destino": "q2", "direcao": "D", "gravar": "b"},
+					"c": {"destino": "q3", "direcao": "E", "gravar": "z"},
+					"z": {"destino": "q2", "direcao": "D", "gravar": "z"}
+				},
+				"q3": {
+					"b": {"destino": "q3", "direcao": "E", "gravar": "b"},
+					"y": {"destino": "q3", "direcao": "E", "gravar": "y"},
+					"a": {"destino": "q3", "direcao": "E", "gravar": "a"},
+					"x": {"destino": "q0", "direcao": "D", "gravar": "x"},
+					"z": {"destino": "q3", "direcao": "E", "gravar": "z"}
+				},
+				"q4": {
+					"y": {"destino": "q4", "direcao": "D", "gravar": "y"},
+					"z": {"destino": "q4", "direcao": "D", "gravar": "z"},
+					"_": {"destino": "q5", "direcao": "D", "gravar": "_"}
+				}
+			}
+		},
+		{
+			"nome": "Teste D1 3 - Maior ou menor",
+			"estados": ["q0","q1","q2","q3","q4","qf","qv","q>=","q<"],
+			"alfabeto_entrada": ["1","0"],
+			"alfabeto_fita": ["1","0","x","y","_"],
+			"estado_inicial": "q0",
+			"simbolo_branco": "_",
+			"estados_finais": ["q>=", "q<"],
+			"transicoes": {
+				"q0": {
+					"1": {"destino": "q1", "direcao": "D", "gravar": "x"},
+					"0": {"destino": "q4", "direcao": "D", "gravar": "0"}
+				},
+				"q1": {
+					"1": {"destino": "q1", "direcao": "D", "gravar": "1"},
+					"0": {"destino": "q2", "direcao": "D", "gravar": "0"}
+				},
+				"q2": {
+					"1": {"destino": "q3", "direcao": "E", "gravar": "y"},
+					"y": {"destino": "q2", "direcao": "D", "gravar": "y"},
+					"_": {"destino": "qv", "direcao": "E", "gravar": "_"}
+				},
+				"q3": {
+					"y": {"destino": "q3", "direcao": "E", "gravar": "y"},
+					"0": {"destino": "q3", "direcao": "E", "gravar": "0"},
+					"1": {"destino": "q3", "direcao": "E", "gravar": "1"},
+					"x": {"destino": "q0", "direcao": "D", "gravar": "x"}
+				},
+				"q4": {
+					"y": {"destino": "q4", "direcao": "D", "gravar": "y"},
+					"1": {"destino": "qf", "direcao": "E", "gravar": "1"},
+					"_": {"destino": "qv", "direcao": "E", "gravar": "_"}
+				},
+				"qf": {
+					"0": {"destino": "qf", "direcao": "E", "gravar": "0"},
+					"y": {"destino": "qf", "direcao": "E", "gravar": "1"},
+					"x": {"destino": "qf", "direcao": "E", "gravar": "1"},
+					"_": {"destino": "q<", "direcao": "D", "gravar": "_"}
+				},
+				"qv": {
+					"y": {"destino": "qv", "direcao": "E", "gravar": "1"},
+					"x": {"destino": "qv", "direcao": "E", "gravar": "1"},
+					"0": {"destino": "qv", "direcao": "E", "gravar": "0"},
+					"1": {"destino": "qv", "direcao": "E", "gravar": "1"},
+					"_": {"destino": "q>=", "direcao": "D", "gravar": "_"}
+				}
+			}
+		},
+		{
+			"nome": "aⁿbᵐaⁿ⁺ᵐ",
+			"estados": ["q0","q1","q2","q3","q4","q5","q6","q7","q8","qf1","qf2"],
+			"alfabeto_entrada": ["a","b"],
+			"alfabeto_fita": ["a","b","X","_"],
+			"estado_inicial": "q0",
+			"simbolo_branco": "_",
+			"estados_finais": ["qf1","qf2"],
+			"transicoes": {
+				"q0": {
+					"a": {"destino": "q1", "direcao": "D", "gravar": "a"},
+					"b": {"destino": "q2", "direcao": "D", "gravar": "b"},
+					"_": {"destino": "qf1", "direcao": "D", "gravar": "_"}
+				},
+				"q1": {
+					"a": {"destino": "q1", "direcao": "D", "gravar": "a"},
+					"b": {"destino": "q2", "direcao": "D", "gravar": "b"},
+					"_": {"destino": "q4", "direcao": "E", "gravar": "_"}
+				},
+				"q2": {
+					"a": {"destino": "q3", "direcao": "D", "gravar": "a"},
+					"b": {"destino": "q2", "direcao": "D", "gravar": "b"}
+				},
+				"q3": {
+					"a": {"destino": "q3", "direcao": "D", "gravar": "a"},
+					"_": {"destino": "q4", "direcao": "E", "gravar": "_"}
+				},
+				"q4": {
+					"a": {"destino": "q4", "direcao": "E", "gravar": "a"},
+					"b": {"destino": "q4", "direcao": "E", "gravar": "b"},
+					"_": {"destino": "q5", "direcao": "D", "gravar": "_"}
+				},
+				"q5": {
+					"a": {"destino": "q6", "direcao": "D", "gravar": "X"},
+					"b": {"destino": "q6", "direcao": "D", "gravar": "X"},
+					"X": {"destino": "qf2", "direcao": "D", "gravar": "X"}
+				},
+				"q6": {
+					"a": {"destino": "q6", "direcao": "D", "gravar": "a"},
+					"b": {"destino": "q6", "direcao": "D", "gravar": "b"},
+					"X": {"destino": "q7", "direcao": "E", "gravar": "X"},
+					"_": {"destino": "q7", "direcao": "E", "gravar": "_"}
+				},
+				"q7": {
+					"a": {"destino": "q8", "direcao": "E", "gravar": "X"}
+				},
+				"q8": {
+					"a": {"destino": "q8", "direcao": "E", "gravar": "a"},
+					"b": {"destino": "q8", "direcao": "E", "gravar": "b"},
+					"X": {"destino": "q5", "direcao": "D", "gravar": "X"}
+				}
+			}
+		},
+		{
+			"nome": "Monus",
+			"estados": ["q0","q1","q2","q3","q4","q5","q6"],
+			"alfabeto_entrada": ["0","1"],
+			"alfabeto_fita": ["0","1","_"],
+			"estado_inicial": "q0",
+			"simbolo_branco": "_",
+			"estados_finais": [],
+			"transicoes": {
+				"q0": {
+					"0": {"destino": "q1", "direcao": "D", "gravar": "_"},
+					"1": {"destino": "q5", "direcao": "D", "gravar": "_"}
+				},
+				"q1": {
+					"0": {"destino": "q1", "direcao": "D", "gravar": "0"},
+					"1": {"destino": "q2", "direcao": "D", "gravar": "1"}
+				},
+				"q2": {
+					"0": {"destino": "q3", "direcao": "E", "gravar": "1"},
+					"1": {"destino": "q2", "direcao": "D", "gravar": "1"},
+					"_": {"destino": "q4", "direcao": "E", "gravar": "_"}
+				},
+				"q3": {
+					"0": {"destino": "q3", "direcao": "E", "gravar": "0"},
+					"1": {"destino": "q3", "direcao": "E", "gravar": "1"},
+					"_": {"destino": "q0", "direcao": "D", "gravar": "_"}
+				},
+				"q4": {
+					"0": {"destino": "q4", "direcao": "E", "gravar": "0"},
+					"1": {"destino": "q4", "direcao": "E", "gravar": "_"},
+					"_": {"destino": "q6", "direcao": "D", "gravar": "_"}
+				},
+				"q5": {
+					"0": {"destino": "q5", "direcao": "D", "gravar": "_"},
+					"1": {"destino": "q5", "direcao": "D", "gravar": "_"},
+					"_": {"destino": "q6", "direcao": "D", "gravar": "_"}
+				}
+			}
+		},
+		{
+			"nome": "Teste D2 1 - wcwᴿ",
+			"estados": ["q0","q1","q2","q3","q4","q5","q6","q7"],
+			"alfabeto_entrada": ["a","b","c"],
+			"alfabeto_fita": ["a","b","c","x","y","_"],
+			"estado_inicial": "q0",
+			"simbolo_branco": "_",
+			"estados_finais": ["q7"],
+			"transicoes": {
+				"q0": {
+					"a": {"destino": "q1", "direcao": "D", "gravar": "x"},
+					"b": {"destino": "q2", "direcao": "D", "gravar": "y"},
+					"c": {"destino": "q6", "direcao": "D", "gravar": "c"}
+				},
+				"q1": {
+					"a": {"destino": "q1", "direcao": "D", "gravar": "a"},
+					"b": {"destino": "q1", "direcao": "D", "gravar": "b"},
+					"c": {"destino": "q1", "direcao": "D", "gravar": "c"},
+					"_": {"destino": "q3", "direcao": "E", "gravar": "_"},
+					"x": {"destino": "q3", "direcao": "E", "gravar": "x"},
+					"y": {"destino": "q3", "direcao": "E", "gravar": "y"}
+				},
+				"q2": {
+					"a": {"destino": "q2", "direcao": "D", "gravar": "a"},
+					"b": {"destino": "q2", "direcao": "D", "gravar": "b"},
+					"c": {"destino": "q2", "direcao": "D", "gravar": "c"},
+					"_": {"destino": "q4", "direcao": "E", "gravar": "_"},
+					"x": {"destino": "q4", "direcao": "E", "gravar": "x"},
+					"y": {"destino": "q4", "direcao": "E", "gravar": "y"}
+				},
+				"q3": {
+					"a": {"destino": "q5", "direcao": "E", "gravar": "x"}
+				},
+				"q4": {
+					"b": {"destino": "q5", "direcao": "E", "gravar": "y"}
+				},
+				"q5": {
+					"a": {"destino": "q5", "direcao": "E", "gravar": "a"},
+					"b": {"destino": "q5", "direcao": "E", "gravar": "b"},
+					"c": {"destino": "q5", "direcao": "E", "gravar": "c"},
+					"x": {"destino": "q0", "direcao": "D", "gravar": "x"},
+					"y": {"destino": "q0", "direcao": "D", "gravar": "y"}
+				},
+				"q6": {
+					"x": {"destino": "q6", "direcao": "D", "gravar": "x"},
+					"y": {"destino": "q6", "direcao": "D", "gravar": "y"},
+					"_": {"destino": "q7", "direcao": "E", "gravar": "_"}
+				}
+			}
+		}
+	]
 }

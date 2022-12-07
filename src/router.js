@@ -11,13 +11,13 @@ const routes = [
         path: "/",
         name: "Home",
         component: () => import("./pages/Turing.vue"),
-        children: [
-          {
-            path: "/duasFitas",
-            name: "Duas Fitas",
-            component: () => import("./pages/TuringDuplo.vue"),
-          },
-        ],
+      },
+      {
+      
+          path: "/duasFitas",
+          name: "Duas Fitas",
+          component: () => import("./pages/TuringDuplo.vue"),
+        
       },
       {
         path: "/sobre",

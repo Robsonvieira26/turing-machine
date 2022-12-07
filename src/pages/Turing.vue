@@ -82,7 +82,7 @@
             ><br />
             Estados Finais: <b>{{ estadosFinais }}</b
             ><br />
-            Símbolo Branco: <b>{{ branco }}</b
+            ´ Símbolo Branco: <b>{{ branco }}</b
             ><br />
             <br />
           </div>
@@ -126,15 +126,7 @@ export default {
       value1: null,
       submitted: false,
       maquinaSelecionada: null,
-      maquinas: [
-        { name: "aⁿbⁿcⁿ", value: 0 },
-        { name: "Teste D1 1 - aⁿbⁿ", value: 1 },
-        { name: "Teste D1 2 - aⁿbⁿcⁿ", value: 2 },
-        { name: "Teste D1 3 - Maior ou menor", value: 3 },
-        { name: "aⁿbᵐaⁿ⁺ᵐ", value: 4 },
-        { name: "Monus", value: 5 },
-        { name: "Teste D2 1 - wcwᴿ", value: 6},
-      ],
+      maquinas: [],
       maquinaCalculo: false,
     };
   },
@@ -144,7 +136,15 @@ export default {
 
   mounted() {
     this.turingService.getMachines().then((machines) => {
+      console.log("Simples");
       this.machines = machines;
+      for( let mt in this.machines)
+      {
+        let line ={
+          "name":this.machines[mt].nome,
+          "value":mt-1}
+          this.maquinas.push(line)
+      }
     });
   },
   methods: {
