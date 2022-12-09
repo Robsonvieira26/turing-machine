@@ -10,6 +10,7 @@
         <div class="field">
           <Dropdown
             v-model="maquinaSelecionada"
+            @change="showInfo(maquinaSelecionada.value)"
             :options="maquinas"
             optionLabel="name"
             placeholder="Selecione a maquina"
@@ -54,25 +55,19 @@
       </div>
       <!-- {{componentKey}} -->
       <Tape
+        v-show="submitted == true && maquinaSelecionada != null"
         :word="wordTape"
         :wordIndex="wordIndex"
         :estadoAtual="estadoAtual"
         :wordLength="wordTape.length"
-        :key="componentKey"
       />
     </div>
   </div>
-  <div v-show="submitted == true" class="px-4">
-    <div claas="card">
-      <h1 class="flex justify-content-center">Informações</h1>
-      <Accordion>
-        <AccordionTab header="Transições Realizadas">
-          <!-- {{transicoesRealizadas}} -->
-          <div v-for="i in transicoesRealizadas" :key="i">
-            {{ i }}
-          </div>
-        </AccordionTab>
-        <AccordionTab header="Informações Maquina">
+  <div v-show="submitted == true || maquinaSelecionada != null" class="px-4">
+    <h1 class="flex justify-content-center">Informações</h1>
+    <div class="card">
+      <TabView>
+        <TabPanel header="Informações Maquina">
           <div>
             Alfabeto: <b>{{ alfabeto }}</b
             ><br />
@@ -86,8 +81,14 @@
             ><br />
             <br />
           </div>
-        </AccordionTab>
-      </Accordion>
+        </TabPanel>
+        <TabPanel header="Transições Realizadas">
+          <div v-if="transicoesRealizadas == 0">Sem Transiçoes Realizadas</div>
+          <div v-for="i in transicoesRealizadas" :key="i">
+            {{ i }}
+          </div>
+        </TabPanel>
+      </TabView>
     </div>
   </div>
 </template>
@@ -188,13 +189,7 @@ export default {
 
     selectMachine(index) {
       this.wordIndex = 1;
-      this.machine = this.machines[index];
-      this.alfabeto = this.machine.alfabeto_entrada;
-      this.estados = this.machine.estados;
-      this.estadoInicial = this.machine.estado_inicial;
-      this.estadosFinais = this.machine.estados_finais;
-      this.estadoAtual = this.machine.estado_inicial;
-      this.branco = this.machine.simbolo_branco;
+      this.showInfo(index);
       this.wordCopy =
         this.branco +
         this.word +
@@ -211,9 +206,18 @@ export default {
         console.log("maquina de calculo");
       }
     },
+    showInfo(index) {
+      this.machine = this.machines[index];
+      this.alfabeto = this.machine.alfabeto_entrada;
+      this.estados = this.machine.estados;
+      this.estadoInicial = this.machine.estado_inicial;
+      this.estadosFinais = this.machine.estados_finais;
+      this.estadoAtual = this.machine.estado_inicial;
+      this.branco = this.machine.simbolo_branco;
+    },
 
     submitWord() {
-      console.log(this.maquinaSelecionada);
+      // console.log(this.maquinaSelecionada);
       this.disabled = false;
       if (this.maquinaSelecionada == null) {
         // máquina não selecionada
