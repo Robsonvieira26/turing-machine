@@ -44,7 +44,7 @@ export default {
         {
           nome: "Lucas Mattos Vieira",
           github: "LucasMattosVieira",
-          githubLink: "https://github.com/Robsonvieira26",
+          githubLink: "https://github.com/LucasMattosVieira",
         },
         {
           nome: "Robson Vieira",
