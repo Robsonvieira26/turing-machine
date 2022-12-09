@@ -82,7 +82,7 @@
             ><br />
             Estados Finais: <b>{{ estadosFinais }}</b
             ><br />
-            ´ Símbolo Branco: <b>{{ branco }}</b
+            Símbolo Branco: <b>{{ branco }}</b
             ><br />
             <br />
           </div>
@@ -104,7 +104,7 @@ export default {
   data() {
     return {
       componentKey: 0,
-      disabled:false,
+      disabled: false,
       //
       turingService: null,
       machines: null,
@@ -138,12 +138,13 @@ export default {
     this.turingService.getMachines().then((machines) => {
       console.log("Simples");
       this.machines = machines;
-      for( let mt in this.machines)
-      {
-        let line ={
-          "name":this.machines[mt].nome,
-          "value":mt-1}
-          this.maquinas.push(line)
+      console.log(this.machines);
+      for (let mt in this.machines) {
+        let line = {
+          name: this.machines[mt].nome,
+          value: mt,
+        };
+        this.maquinas.push(line);
       }
     });
   },
@@ -212,6 +213,7 @@ export default {
     },
 
     submitWord() {
+      console.log(this.maquinaSelecionada);
       this.disabled = false;
       if (this.maquinaSelecionada == null) {
         // máquina não selecionada

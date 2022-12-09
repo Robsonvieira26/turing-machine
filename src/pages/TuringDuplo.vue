@@ -104,7 +104,7 @@ export default {
   data() {
     return {
       componentKey: 0,
-      disabled:false,
+      disabled: false,
       //
       turingService: null,
       machines: null,
@@ -139,12 +139,12 @@ export default {
     this.turingService.getMachinesDuplo().then((machines) => {
       console.log("Duplo2");
       this.machines = machines;
-      for( let mt in this.machines)
-      {
-        let line ={
-          "name":this.machines[mt].nome,
-          "value":mt-1}
-          this.maquinas.push(line)
+      for (let mt in this.machines) {
+        let line = {
+          name: this.machines[mt].nome,
+          value: mt,
+        };
+        this.maquinas.push(line);
       }
     });
   },
