@@ -257,7 +257,7 @@ export default {
       this.wordCopy[0] = this.branco + this.word + this.branco + this.branco;
       this.wordCopy[1] = this.branco + this.branco + this.branco + this.branco + this.branco;
       this.wordIndex[0] = 1;
-      this.wordIndex[1] = 0;
+      this.wordIndex[1] = 1;
       this.estadoAtual = this.estadoInicial;
       this.submitted = false;
       this.transicoesRealizadas = [];
