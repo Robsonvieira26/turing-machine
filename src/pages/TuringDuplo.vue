@@ -191,10 +191,7 @@ export default {
       this.wordTape[1] = this.wordCopy[1];
     },
 
-    selectMachine(index) {
-      this.wordIndex = 1;
-      this.showInfo(index);
-
+    reiniciaFitas() {
       this.wordCopy[0] = this.branco + this.word;
       for (let i = 0; i <= 5; i++) {
         this.wordCopy[0] = this.wordCopy[0] + this.branco;
@@ -203,7 +200,10 @@ export default {
       for (let i = 0; i < this.wordCopy[0].length - 1; i++) {
         this.wordCopy[1] = this.wordCopy[1] + this.branco;
       }
-
+    },
+    selectMachine(index) {
+      this.showInfo(index);
+      this.reiniciaFitas();
       if (this.machine.estadosFinais === [] || index == 5) {
         this.maquinaCalculo = true;
         console.log("maquina de calculo");
@@ -211,6 +211,8 @@ export default {
     },
     showInfo(index) {
       this.machine = this.machines[index];
+      this.wordIndex[0] = this.machine.posicao_inicial[0];
+      this.wordIndex[1] = this.machine.posicao_inicial[1];
       this.alfabeto = this.machine.alfabeto_entrada;
       this.estados = this.machine.estados;
       this.estadoInicial = this.machine.estado_inicial;
@@ -242,11 +244,7 @@ export default {
     },
 
     restart() {
-      this.wordCopy[0] = this.branco + this.word + this.branco + this.branco;
-      this.wordCopy[1] =
-        this.branco + this.branco + this.branco + this.branco + this.branco;
-      this.wordIndex[0] = 1;
-      this.wordIndex[1] = 1;
+      this.reiniciaFitas();
       this.estadoAtual = this.estadoInicial;
       this.submitted = false;
       this.transicoesRealizadas = [];
@@ -256,8 +254,8 @@ export default {
     },
 
     editWord(pos, letter, wordFlag) {
-      if (wordFlag != 0 || wordFlag != 1) {
-        //alguma coisa
+      if (wordFlag != 0 && wordFlag != 1) {
+        this.warning();
       }
       const auxAnt = this.wordCopy[wordFlag].slice(0, pos);
       const auxPos = this.wordCopy[wordFlag].slice(pos + 1);
@@ -269,8 +267,13 @@ export default {
         this.mtAceita();
         return 1;
       } else {
-        const letterSearch = this.wordCopy[this.wordIndex];
+        // eslint-disable-next-line no-unused-vars
+        const letterSearch =
+          this.wordCopy[0][this.wordIndex[0]] +
+          this.wordCopy[1][this.wordIndex[1]];
+        // console.log("Leitura: " + letterSearch);
         const transicoesValidas = Object.keys(this.machine.transicoes);
+
         if (transicoesValidas.indexOf(this.estadoAtual) == -1) {
           if (this.maquinaCalculo) {
             this.mtPara();
@@ -282,9 +285,11 @@ export default {
         }
         const transicoesEstdAtual = this.machine.transicoes[this.estadoAtual];
         const opTransicao = Object.keys(transicoesEstdAtual);
-
+        // console.log(opTransicao);
         const index = opTransicao.indexOf(letterSearch);
+        // console.log(index);
         const action = transicoesEstdAtual[opTransicao[index]];
+        // console.log(action);
 
         if (action == null) {
           if (this.maquinaCalculo) {
@@ -297,41 +302,62 @@ export default {
           }
         }
 
-        //Add Transição
+        // Add Transição
         this.salvaTransicao(letterSearch, action);
 
-        this.editWord(this.wordIndex, action.gravar);
+        this.editWord(this.wordIndex[0], action["f1"].gravar, 0);
+        this.editWord(this.wordIndex[1], action["f2"].gravar, 1);
 
-        if (action.direcao === "D") {
-          this.wordIndex += 1;
-        } else if (this.wordIndex > 0) {
-          this.wordIndex -= 1;
+        //Movimentação Fita 1
+        if (action["f1"].direcao === "D") {
+          this.wordIndex[0] += 1;
+        } else if (action["f1"].direcao === "E" && this.wordIndex[0] > 0) {
+          this.wordIndex[0] -= 1;
+        } else if (action["f1"].direcao === "P") {
+          // eslint-disable-next-line no-self-assign
+          this.wordIndex[0] = this.wordIndex[0];
+        }
+
+        //Movimentação Fita 2
+        if (action["f2"].direcao === "D") {
+          this.wordIndex[1] += 1;
+        } else if (action["f2"].direcao === "E" && this.wordIndex[1] > 0) {
+          this.wordIndex[1] -= 1;
+        } else if (action["f2"].direcao === "P") {
+          // eslint-disable-next-line no-self-assign
+          this.wordIndex[1] = this.wordIndex[1];
         }
       }
       this.drawTape();
 
-      return 0;
+      // return 0;
     },
 
     salvaTransicao(letterSearch, action) {
       const estadoSaida = this.estadoAtual;
-      const simboloEntrada = letterSearch;
+      const simboloEntrada = [letterSearch[0], letterSearch[1]];
       //Segunda parte da transição
       const estadoDestino = action.destino;
-      const direcao = action.direcao;
-      const simboloSaida = action.gravar;
+      const direcao = [action["f1"].direcao, action["f2"].direcao];
+      const simboloSaida = [action["f1"].gravar, action["f2"].gravar];
 
       const transicao =
         "δ(" +
         estadoSaida +
         "," +
-        simboloEntrada +
+        simboloEntrada[0] +
+        "," +
+        simboloEntrada[1] +
         ") = (" +
         estadoDestino +
         "," +
-        simboloSaida +
+        simboloSaida[0] +
         "," +
-        direcao +
+        direcao[0] +
+        "," +
+        simboloSaida[1] +
+        "," +
+        direcao[1] +
         ")";
       this.transicoesRealizadas.push(transicao);
       this.estadoAtual = action.destino;
