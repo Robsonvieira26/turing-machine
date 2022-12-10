@@ -71,7 +71,7 @@
     </div>
   </div>
   <div v-show="submitted == true || maquinaSelecionada != null" class="px-4">
-      <h1 class="flex justify-content-center">Informações</h1>
+    <h1 class="flex justify-content-center">Informações</h1>
     <div class="card">
       <TabView>
         <TabPanel header="Informações Maquina">
@@ -126,9 +126,9 @@ export default {
       branco: "",
       word: "",
       //Controle
-      wordTape: ["",""],
-      wordCopy: ["",""],
-      wordIndex: [0,0],
+      wordTape: ["", ""],
+      wordCopy: ["", ""],
+      wordIndex: [0, 0],
       submitted: false,
       maquinaSelecionada: null,
       maquinas: [],
@@ -137,12 +137,10 @@ export default {
   },
   created() {
     this.turingService = new TuringService();
-    console.log("Duplo1");
   },
 
   mounted() {
     this.turingService.getMachinesDuplo().then((machines) => {
-      console.log("Duplo2");
       this.machines = machines;
       for (let mt in this.machines) {
         let line = {
@@ -183,6 +181,15 @@ export default {
       });
       this.disabled = true;
     },
+    warning() {
+      this.$toast.add({
+        severity: "erro",
+        summary: "Erro",
+        detail: "Algo deu errado!",
+        life: 3000,
+      });
+      this.disabled = true;
+    },
 
     drawTape() {
       this.componentKey += 1;
@@ -195,24 +202,15 @@ export default {
     selectMachine(index) {
       this.wordIndex = 1;
       this.showInfo(index);
-      this.wordCopy =
-        this.branco +
-        this.word +
-        this.branco +
-        this.branco +
-        this.branco +
-        this.branco +
-        this.branco +
-        this.branco;
-      this.wordCopy2 =
-        this.branco +
-        this.branco +
-        this.branco +
-        this.branco +
-        this.branco +
-        this.branco +
-        this.branco;
-      console.log(this.machine.estadosFinais);
+
+      this.wordCopy[0] = this.branco + this.word;
+      for (let i = 0; i <= 5; i++) {
+        this.wordCopy[0] = this.wordCopy[0] + this.branco;
+      }
+      this.wordCopy[1] = this.branco;
+      for (let i = 0; i < this.wordCopy[0].length - 1; i++) {
+        this.wordCopy[1] = this.wordCopy[1] + this.branco;
+      }
 
       if (this.machine.estadosFinais === [] || index == 5) {
         this.maquinaCalculo = true;
@@ -258,7 +256,8 @@ export default {
 
     restart() {
       this.wordCopy1 = this.branco + this.word + this.branco + this.branco;
-      this.wordCopy2 = this.branco + this.branco + this.branco + this.branco + this.branco;
+      this.wordCopy2 =
+        this.branco + this.branco + this.branco + this.branco + this.branco;
       this.wordIndex1 = 1;
       this.wordIndex2 = 0;
       this.estadoAtual = this.estadoInicial;
