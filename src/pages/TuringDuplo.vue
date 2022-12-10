@@ -185,11 +185,8 @@ export default {
     },
 
     drawTape() {
-      this.componentKey += 1;
-      // console.log(this.componentKey);
-      this.wordTape1 = this.wordCopy1;
-      this.wordTape2 = this.wordCopy2;
-      // this.sleep(2000);
+      this.wordTape[0] = this.wordCopy[0];
+      this.wordTape[1] = this.wordCopy[1];
     },
 
     selectMachine(index) {
@@ -242,8 +239,8 @@ export default {
         return;
       } else {
         // máquina selecionada e palavra inserida
-        this.wordTape1 = this.wordCopy1;
-        this.wordTape2 = this.wordCopy2;
+        this.wordTape[0] = this.wordCopy[0];
+        this.wordTape[1] = this.wordCopy[1];
         this.submitted = true;
         this.selectMachine(this.maquinaSelecionada.value);
         this.transicoesRealizadas = [];
@@ -257,10 +254,10 @@ export default {
     },
 
     restart() {
-      this.wordCopy1 = this.branco + this.word + this.branco + this.branco;
-      this.wordCopy2 = this.branco + this.branco + this.branco + this.branco + this.branco;
-      this.wordIndex1 = 1;
-      this.wordIndex2 = 0;
+      this.wordCopy[0] = this.branco + this.word + this.branco + this.branco;
+      this.wordCopy[1] = this.branco + this.branco + this.branco + this.branco + this.branco;
+      this.wordIndex[0] = 1;
+      this.wordIndex[1] = 0;
       this.estadoAtual = this.estadoInicial;
       this.submitted = false;
       this.transicoesRealizadas = [];
@@ -270,15 +267,12 @@ export default {
     },
 
     editWord(pos, letter, wordFlag) {
-      if (wordFlag == 1) {
-        const auxAnt = this.wordCopy.slice(0, pos);
-        const auxPos = this.wordCopy.slice(pos + 1);
-        this.wordCopy = auxAnt + letter + auxPos;
-      } else {
-        const auxAnt = this.wordCopy.slice(0, pos);
-        const auxPos = this.wordCopy.slice(pos + 1);
-        this.wordCopy = auxAnt + letter + auxPos;
+      if (wordFlag != 0 || wordFlag != 1) {
+        //alguma coisa
       }
+      const auxAnt = this.wordCopy[wordFlag].slice(0, pos);
+      const auxPos = this.wordCopy[wordFlag].slice(pos + 1);
+      this.wordCopy[wordFlag] = auxAnt + letter + auxPos; 
     },
 
     oneStep() {
