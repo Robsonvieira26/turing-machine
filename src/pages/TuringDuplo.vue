@@ -56,17 +56,17 @@
       <!-- {{componentKey}} -->
       <Tape
         v-show="submitted == true && maquinaSelecionada != null"
-        :word="wordTape1"
-        :wordIndex="wordIndex1"
-        :estadoAtual="estadoAtual1"
-        :wordLength="wordTape1.length"
+        :word="wordTape[0]"
+        :wordIndex="wordIndex[0]"
+        :estadoAtual="estadoAtual"
+        :wordLength="wordTape[0].length"
       />
       <Tape
         v-show="submitted == true && maquinaSelecionada != null"
-        :word="wordTape2"
-        :wordIndex="wordIndex2"
-        :estadoAtual="estadoAtual2"
-        :wordLength="wordTape2.lenght"
+        :word="wordTape[1]"
+        :wordIndex="wordIndex[1]"
+        :estadoAtual="estadoAtual"
+        :wordLength="wordTape[1].length"
       />
     </div>
   </div>
@@ -111,7 +111,6 @@ export default {
   },
   data() {
     return {
-      componentKey: 0,
       disabled: false,
       //
       turingService: null,
@@ -123,19 +122,13 @@ export default {
       estados: [],
       estadoInicial: "",
       estadosFinais: [],
-      estadoAtual1: "",
-      estadoAtual2: "",
+      estadoAtual: "",
       branco: "",
       word: "",
       //Controle
-      wordTemp: "",
-      wordTape1: "",
-      wordTape2: "",
-      wordCopy1: "",
-      wordCopy2: "",
-      wordIndex1: 0,
-      wordIndex2: 0,
-      value1: null,
+      wordTape: ["",""],
+      wordCopy: ["",""],
+      wordIndex: [0,0],
       submitted: false,
       maquinaSelecionada: null,
       maquinas: [],
