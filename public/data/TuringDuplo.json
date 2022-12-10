@@ -190,6 +190,125 @@
           }
         }
       }
-    }
+    },
+    {
+			"nome": "aⁿbᵐaⁿ⁺ᵐ",
+			"estados": ["q0","q1","q2","q3","qf"],
+			"alfabeto_entrada": ["a","b"],
+			"alfabeto_fita": ["a","b","_"],
+			"estado_inicial": "q0",
+			"simbolo_branco": "_",
+      "posicao_inicial": [1, 1],
+			"estados_finais": ["qf"],
+			"transicoes": {
+        "q0": {
+          "__": {
+            "destino": "qf",
+            "f1": {
+              "direcao": "D",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "_"
+            }
+          },
+          "a_": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "D",
+              "gravar": "a"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "a"
+            }
+          }
+        },
+        "q1": {
+          "a_": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "D",
+              "gravar": "a"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "a"
+            }
+          },
+          "b_": {
+            "destino": "q2",
+            "f1": {
+              "direcao": "D",
+              "gravar": "b"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "b"
+            }
+          }
+        },
+        "q2": {
+          "b_": {
+            "destino": "q2",
+            "f1": {
+              "direcao": "D",
+              "gravar": "b"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "b"
+            }
+          },
+          "a_": {
+            "destino": "q3",
+            "f1": {
+              "direcao": "P",
+              "gravar": "a"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "_"
+            }
+          }
+        },
+        "q3": {
+          "aa": {
+            "destino": "q3",
+            "f1": {
+              "direcao": "D",
+              "gravar": "a"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "a"
+            }
+          },
+          "ab": {
+            "destino": "q3",
+            "f1": {
+              "direcao": "D",
+              "gravar": "a"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "b"
+            }
+          },
+          "__": {
+            "destino": "qf",
+            "f1": {
+              "direcao": "D",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "_"
+            }
+          }
+        }
+			}
+		}
   ]
 }
