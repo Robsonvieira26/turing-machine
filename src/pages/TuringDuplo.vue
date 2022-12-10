@@ -56,15 +56,22 @@
       <!-- {{componentKey}} -->
       <Tape
         v-show="submitted == true && maquinaSelecionada != null"
-        :word="wordTape"
-        :wordIndex="wordIndex"
-        :estadoAtual="estadoAtual"
-        :wordLength="wordTape.length"
+        :word="wordTape1"
+        :wordIndex="wordIndex1"
+        :estadoAtual="estadoAtual1"
+        :wordLength="wordTape1.length"
+      />
+      <Tape
+        v-show="submitted == true && maquinaSelecionada != null"
+        :word="wordTape2"
+        :wordIndex="wordIndex2"
+        :estadoAtual="estadoAtual2"
+        :wordLength="wordTape2.lenght"
       />
     </div>
   </div>
   <div v-show="submitted == true || maquinaSelecionada != null" class="px-4">
-    <h1 class="flex justify-content-center">Informações</h1>
+      <h1 class="flex justify-content-center">Informações</h1>
     <div class="card">
       <TabView>
         <TabPanel header="Informações Maquina">
@@ -116,14 +123,18 @@ export default {
       estados: [],
       estadoInicial: "",
       estadosFinais: [],
-      estadoAtual: "",
+      estadoAtual1: "",
+      estadoAtual2: "",
       branco: "",
       word: "",
       //Controle
       wordTemp: "",
-      wordTape: "",
-      wordCopy: "",
-      wordIndex: 0,
+      wordTape1: "",
+      wordTape2: "",
+      wordCopy1: "",
+      wordCopy2: "",
+      wordIndex1: 0,
+      wordIndex2: 0,
       value1: null,
       submitted: false,
       maquinaSelecionada: null,
@@ -183,7 +194,8 @@ export default {
     drawTape() {
       this.componentKey += 1;
       // console.log(this.componentKey);
-      this.wordTape = this.wordCopy;
+      this.wordTape1 = this.wordCopy1;
+      this.wordTape2 = this.wordCopy2;
       // this.sleep(2000);
     },
 
@@ -193,6 +205,14 @@ export default {
       this.wordCopy =
         this.branco +
         this.word +
+        this.branco +
+        this.branco +
+        this.branco +
+        this.branco +
+        this.branco +
+        this.branco;
+      this.wordCopy2 =
+        this.branco +
         this.branco +
         this.branco +
         this.branco +
@@ -229,7 +249,8 @@ export default {
         return;
       } else {
         // máquina selecionada e palavra inserida
-        this.wordTape = this.wordCopy;
+        this.wordTape1 = this.wordCopy1;
+        this.wordTape2 = this.wordCopy2;
         this.submitted = true;
         this.selectMachine(this.maquinaSelecionada.value);
         this.transicoesRealizadas = [];
@@ -243,8 +264,10 @@ export default {
     },
 
     restart() {
-      this.wordCopy = this.branco + this.word + this.branco + this.branco;
-      this.wordIndex = 1;
+      this.wordCopy1 = this.branco + this.word + this.branco + this.branco;
+      this.wordCopy2 = this.branco + this.branco + this.branco + this.branco + this.branco;
+      this.wordIndex1 = 1;
+      this.wordIndex2 = 0;
       this.estadoAtual = this.estadoInicial;
       this.submitted = false;
       this.transicoesRealizadas = [];
@@ -253,10 +276,16 @@ export default {
       this.drawTape();
     },
 
-    editWord(pos, letter) {
-      const auxAnt = this.wordCopy.slice(0, pos);
-      const auxPos = this.wordCopy.slice(pos + 1);
-      this.wordCopy = auxAnt + letter + auxPos;
+    editWord(pos, letter, wordFlag) {
+      if (wordFlag == 1) {
+        const auxAnt = this.wordCopy.slice(0, pos);
+        const auxPos = this.wordCopy.slice(pos + 1);
+        this.wordCopy = auxAnt + letter + auxPos;
+      } else {
+        const auxAnt = this.wordCopy.slice(0, pos);
+        const auxPos = this.wordCopy.slice(pos + 1);
+        this.wordCopy = auxAnt + letter + auxPos;
+      }
     },
 
     oneStep() {
