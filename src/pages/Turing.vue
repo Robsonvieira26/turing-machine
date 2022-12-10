@@ -104,7 +104,6 @@ export default {
   },
   data() {
     return {
-      componentKey: 0,
       disabled: false,
       //
       turingService: null,
@@ -120,11 +119,9 @@ export default {
       branco: "",
       word: "",
       //Controle
-      wordTemp: "",
       wordTape: "",
       wordCopy: "",
       wordIndex: 0,
-      value1: null,
       submitted: false,
       maquinaSelecionada: null,
       maquinas: [],
@@ -181,10 +178,7 @@ export default {
     },
 
     drawTape() {
-      this.componentKey += 1;
-      // console.log(this.componentKey);
       this.wordTape = this.wordCopy;
-      // this.sleep(2000);
     },
 
     selectMachine(index) {
@@ -217,7 +211,6 @@ export default {
     },
 
     submitWord() {
-      // console.log(this.maquinaSelecionada);
       this.disabled = false;
       if (this.maquinaSelecionada == null) {
         // máquina não selecionada
@@ -236,11 +229,6 @@ export default {
         this.transicoesRealizadas = [];
         this.drawTape();
       }
-      //}
-
-      // console.log("submitted");
-      // console.log(this.machine.transicoes);
-      // this.drawTape();
     },
 
     restart() {
@@ -267,7 +255,6 @@ export default {
       } else {
         const letterSearch = this.wordCopy[this.wordIndex];
         const transicoesValidas = Object.keys(this.machine.transicoes);
-        // console.log(transicoesValidas);
         if (transicoesValidas.indexOf(this.estadoAtual) == -1) {
           if (this.maquinaCalculo) {
             this.mtPara();
@@ -332,7 +319,6 @@ export default {
         ")";
       this.transicoesRealizadas.push(transicao);
       this.estadoAtual = action.destino;
-      // console.log(transicao);
     },
 
     async allStep() {
