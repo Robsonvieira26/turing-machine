@@ -13,6 +13,7 @@
             @change="showInfo(maquinaSelecionada.value)"
             :options="maquinas"
             optionLabel="name"
+            :disabled="disabledDropdown"
             placeholder="Selecione a maquina"
           />
         </div>
@@ -105,6 +106,7 @@ export default {
   data() {
     return {
       disabled: false,
+      disabledDropdown: false,
       //
       turingService: null,
       machines: null,
@@ -212,6 +214,7 @@ export default {
 
     submitWord() {
       this.disabled = false;
+      this.disabledDropdown = true;
       if (this.maquinaSelecionada == null) {
         // máquina não selecionada
         this.$toast.add({
@@ -232,6 +235,7 @@ export default {
     },
 
     restart() {
+      this.disabledDropdown = false;
       this.wordCopy = this.branco + this.word + this.branco + this.branco;
       this.wordIndex = 1;
       this.estadoAtual = this.estadoInicial;

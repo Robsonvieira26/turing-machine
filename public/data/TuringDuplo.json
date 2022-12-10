@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "nome": "a^i b a^i, i>= 0",
+      "nome": "aᶦbaᶦ, i>= 0",
       "estados": ["q0", "q1", "q2", "q3"],
       "alfabeto_entrada": ["a", "b"],
       "alfabeto_fita": ["a", "b", "_"],
@@ -68,6 +68,123 @@
             },
             "f2": {
               "direcao": "D",
+              "gravar": "_"
+            }
+          }
+        }
+      }
+    },
+    {
+      "nome": "Palindromo Binario",
+      "estados": ["qCopia", "qRetorna", "qTeste", "qAceita"],
+      "alfabeto_entrada": ["0", "1"],
+      "alfabeto_fita": ["0", "1", "_"],
+      "estado_inicial": "qCopia",
+      "simbolo_branco": "_",
+      "posicao_inicial": [1, 1],
+      "estados_finais": ["qAceita"],
+      "transicoes": {
+        "qCopia": {
+          "0_": {
+            "destino": "qCopia",
+            "f1": {
+              "direcao": "D",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "0"
+            }
+          },
+          "1_": {
+            "destino": "qCopia",
+            "f1": {
+              "direcao": "D",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "1"
+            }
+          },
+          "__": {
+            "destino": "qRetorna",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "_"
+            }
+          }
+        },
+        "qRetorna": {
+          "_0": {
+            "destino": "qRetorna",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "0"
+            }
+          },
+          "_1": {
+            "destino": "qRetorna",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "1"
+            }
+          },
+          "__": {
+            "destino": "qTeste",
+            "f1": {
+              "direcao": "E",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "_"
+            }
+          }
+        },
+        "qTeste": {
+          "00": {
+            "destino": "qTeste",
+            "f1": {
+              "direcao": "E",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "0"
+            }
+          },
+          "11": {
+            "destino": "qTeste",
+            "f1": {
+              "direcao": "E",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "1"
+            }
+          },
+          "__": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "P",
               "gravar": "_"
             }
           }

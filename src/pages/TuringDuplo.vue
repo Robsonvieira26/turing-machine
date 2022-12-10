@@ -10,6 +10,7 @@
             :options="maquinas"
             optionLabel="name"
             placeholder="Selecione a maquina"
+            :disabled="disabledDropdown"
           />
         </div>
         <div class="field">
@@ -107,6 +108,7 @@ export default {
   data() {
     return {
       disabled: false,
+      disabledDropdown: false,
       //
       turingService: null,
       machines: null,
@@ -223,6 +225,7 @@ export default {
 
     submitWord() {
       this.disabled = false;
+      this.disabledDropdown = true;
       if (this.maquinaSelecionada == null) {
         // máquina não selecionada
         this.$toast.add({
@@ -244,6 +247,7 @@ export default {
     },
 
     restart() {
+      this.disabledDropdown = false;
       this.reiniciaFitas();
       this.estadoAtual = this.estadoInicial;
       this.submitted = false;
