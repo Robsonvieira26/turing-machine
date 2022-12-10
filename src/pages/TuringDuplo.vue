@@ -1,9 +1,5 @@
-<!-- eslint-disable no-undef -->
 <template>
-  <!-- {{ machine }} -->
   <Toast />
-  <!-- <h1 class="flex justify-content-center">Maquina De Turing</h1> -->
-  <!-- <br /> -->
   <div class="px-4">
     <div class="card">
       <div class="formgroup-inline">
@@ -53,7 +49,6 @@
           </div>
         </div>
       </div>
-      <!-- {{componentKey}} -->
       <Tape
         v-show="submitted == true && maquinaSelecionada != null"
         :word="wordTape[0]"
@@ -244,16 +239,12 @@ export default {
         this.transicoesRealizadas = [];
         this.drawTape();
       }
-      //}
-
-      // console.log("submitted");
-      // console.log(this.machine.transicoes);
-      // this.drawTape();
     },
 
     restart() {
       this.wordCopy[0] = this.branco + this.word + this.branco + this.branco;
-      this.wordCopy[1] = this.branco + this.branco + this.branco + this.branco + this.branco;
+      this.wordCopy[1] =
+        this.branco + this.branco + this.branco + this.branco + this.branco;
       this.wordIndex[0] = 1;
       this.wordIndex[1] = 1;
       this.estadoAtual = this.estadoInicial;
@@ -270,7 +261,7 @@ export default {
       }
       const auxAnt = this.wordCopy[wordFlag].slice(0, pos);
       const auxPos = this.wordCopy[wordFlag].slice(pos + 1);
-      this.wordCopy[wordFlag] = auxAnt + letter + auxPos; 
+      this.wordCopy[wordFlag] = auxAnt + letter + auxPos;
     },
 
     oneStep() {
@@ -280,7 +271,6 @@ export default {
       } else {
         const letterSearch = this.wordCopy[this.wordIndex];
         const transicoesValidas = Object.keys(this.machine.transicoes);
-        // console.log(transicoesValidas);
         if (transicoesValidas.indexOf(this.estadoAtual) == -1) {
           if (this.maquinaCalculo) {
             this.mtPara();
@@ -345,7 +335,6 @@ export default {
         ")";
       this.transicoesRealizadas.push(transicao);
       this.estadoAtual = action.destino;
-      // console.log(transicao);
     },
 
     async allStep() {
