@@ -206,7 +206,7 @@ export default {
     selectMachine(index) {
       this.showInfo(index);
       this.reiniciaFitas();
-      if (this.machine.estadosFinais === [] || index == 5) {
+      if (this.machine.estadosFinais === []) {
         this.maquinaCalculo = true;
         console.log("maquina de calculo");
       }
