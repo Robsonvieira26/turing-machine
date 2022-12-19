@@ -309,6 +309,89 @@
           }
         }
 			}
-		}
+		},
+    {
+			"nome": "f(w) = w^R",
+			"estados": ["q0","q1","q2"],
+			"alfabeto_entrada": ["a","b"],
+			"alfabeto_fita": ["a","b","_"],
+			"estado_inicial": "q0",
+			"simbolo_branco": "_",
+      "posicao_inicial": [1, 1],
+			"estados_finais": ["q2"],
+			"transicoes": {
+        "q0": {
+          "a_": {
+            "destino": "q0",
+            "f1": {
+              "direcao": "D",
+              "gravar": "a"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          },
+          "b_": {
+            "destino": "q0",
+            "f1": {
+              "direcao": "D",
+              "gravar": "b"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          },
+          "__": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "E",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          }
+        },
+        "q1": {
+          "a_": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "E",
+              "gravar": "a"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "a"
+            }
+          },
+          "b_": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "E",
+              "gravar": "b"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "b"
+            }
+          },
+          "__": {
+            "destino": "q2",
+            "f1": {
+              "direcao": "D",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          }
+        }
+          
+      }
+    }
   ]
 }
