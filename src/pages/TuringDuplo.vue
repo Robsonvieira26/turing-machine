@@ -369,14 +369,17 @@ export default {
 
     async allStep() {
       this.disabled = true;
+      let tempo1 = performance.now();
       while (this.estadosFinais.indexOf(this.estadoAtual) === -1) {
         let retorno = this.oneStep();
         if (retorno === -1 || retorno === 1) return;
 
-        await this.sleep(500);
+        // await this.sleep(500);
       }
 
       this.oneStep(); // força a mensagem de Aceite da palavra
+      let tempo2 = performance.now();
+      console.log(`Tempo execução: ${tempo2 - tempo1} ms`);
     },
 
     sleep(ms) {
