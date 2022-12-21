@@ -846,6 +846,17 @@
               "direcao": "P",
               "gravar": "1"
             }
+          },
+          "+_": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
           }
         },
         "qCarry": {
