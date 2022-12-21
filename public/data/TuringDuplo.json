@@ -311,8 +311,8 @@
 			}
 		},
     {
-			"nome": "f(w) = w^R",
-			"estados": ["q0","q1","q2"],
+      "nome": "f(w) = w^R",
+      "estados": ["q0","q1","q2"],
 			"alfabeto_entrada": ["a","b"],
 			"alfabeto_fita": ["a","b","_"],
 			"estado_inicial": "q0",
@@ -391,6 +391,564 @@
           }
         }
           
+      }
+    },
+    {
+      "nome": "Soma de Binários: 'palavra+palavra'",
+      "estados": ["qV1","qV2","qV3","q0","q1","q2","q3","q4","q5","q6","qNormal","qCarry","qAceita"],
+			"alfabeto_entrada": ["0","1","+"],
+			"alfabeto_fita": ["0","1","+","_"],
+			"estado_inicial": "q0",
+			"simbolo_branco": "_",
+      "posicao_inicial": [1, 1],
+			"estados_finais": ["qAceita"],
+			"transicoes": {
+        "q0": {
+          "0_": {
+            "destino": "q0",
+            "f1": {
+              "direcao": "D",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "0"
+            }
+          },
+          "1_": {
+            "destino": "q0",
+            "f1": {
+              "direcao": "D",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "1"
+            }
+          },
+          "+_": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "D",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "_"
+            }
+          }
+        },
+        "q1": {
+          "00": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "D",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "0"
+            }
+          },
+          "01": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "D",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "1"
+            }
+          },
+          "10": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "D",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "0"
+            }
+          },
+          "11": {
+            "destino": "q1",
+            "f1": {
+              "direcao": "D",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "1"
+            }
+          },
+          "_0": {
+            "destino": "q2",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "0"
+            }
+          },
+          "_1": {
+            "destino": "q2",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "1"
+            }
+          },
+          "__": {
+            "destino": "q2",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "_"
+            }
+          },
+          "0_": {
+            "destino": "q3",
+            "f1": {
+              "direcao": "E",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          },
+          "1_": {
+            "destino": "q3",
+            "f1": {
+              "direcao": "E",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          }
+        },
+        "q2": {
+          "_0": {
+            "destino": "q2",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "0"
+            }
+          },
+          "_1": {
+            "destino": "q2",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "1"
+            }
+          },
+          "__": {
+            "destino": "qNormal",
+            "f1": {
+              "direcao": "E",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "_"
+            }
+          }
+        },
+        "q3": {
+          "0_": {
+            "destino": "q3",
+            "f1": {
+              "direcao": "E",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          },
+          "1_": {
+            "destino": "q3",
+            "f1": {
+              "direcao": "E",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          },
+          "+_": {
+            "destino": "q4",
+            "f1": {
+              "direcao": "P",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "_"
+            }
+          }
+        },
+        "q4": {
+          "+0": {
+            "destino": "q4",
+            "f1": {
+              "direcao": "P",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "0"
+            }
+          },
+          "+1": {
+            "destino": "q4",
+            "f1": {
+              "direcao": "P",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "1"
+            }
+          },
+          "+_": {
+            "destino": "q5",
+            "f1": {
+              "direcao": "D",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "_"
+            }
+          }
+        },
+        "q5": {
+          "00": {
+            "destino": "q5",
+            "f1": {
+              "direcao": "D",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "0"
+            }
+          },
+          "01": {
+            "destino": "q5",
+            "f1": {
+              "direcao": "D",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "0"
+            }
+          },
+          "0_": {
+            "destino": "q5",
+            "f1": {
+              "direcao": "D",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "0"
+            }
+          },
+          "10": {
+            "destino": "q5",
+            "f1": {
+              "direcao": "D",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "1"
+            }
+          },
+          "11": {
+            "destino": "q5",
+            "f1": {
+              "direcao": "D",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "1"
+            }
+          },
+          "1_": {
+            "destino": "q5",
+            "f1": {
+              "direcao": "D",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "D",
+              "gravar": "1"
+            }
+          },
+          "__": {
+            "destino": "q6",
+            "f1": {
+              "direcao": "E",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          }
+        },
+        "q6": {
+          "0_": {
+            "destino": "q6",
+            "f1": {
+              "direcao": "E",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          },
+          "1_": {
+            "destino": "q6",
+            "f1": {
+              "direcao": "E",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "_"
+            }
+          },
+          "+_": {
+            "destino": "qNormal",
+            "f1": {
+              "direcao": "E",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "_"
+            }
+          }
+        },
+        "qNormal": {
+          "00": {
+            "destino": "qNormal",
+            "f1": {
+              "direcao": "E",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "0"
+            }
+          },
+          "01": {
+            "destino": "qNormal",
+            "f1": {
+              "direcao": "E",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "1"
+            }
+          },
+          "10": {
+            "destino": "qNormal",
+            "f1": {
+              "direcao": "E",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "1"
+            }
+          },
+          "11": {
+            "destino": "qCarry",
+            "f1": {
+              "direcao": "E",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "0"
+            }
+          },
+          "_0": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "0"
+            }
+          },
+          "_1": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "1"
+            }
+          },
+          "+0": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "0"
+            }
+          },
+          "+1": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "1"
+            }
+          }
+        },
+        "qCarry": {
+          "00": {
+            "destino": "qNormal",
+            "f1": {
+              "direcao": "E",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "1"
+            }
+          },
+          "01": {
+            "destino": "qCarry",
+            "f1": {
+              "direcao": "E",
+              "gravar": "0"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "0"
+            }
+          },
+          "10": {
+            "destino": "qCarry",
+            "f1": {
+              "direcao": "E",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "0"
+            }
+          },
+          "11": {
+            "destino": "qCarry",
+            "f1": {
+              "direcao": "E",
+              "gravar": "1"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "1"
+            }
+          },
+          "_0": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "1"
+            }
+          },
+          "_1": {
+            "destino": "qCarry",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
+            },
+            "f2": {
+              "direcao": "E",
+              "gravar": "0"
+            }
+          },
+          "+0": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "1"
+            }
+          },
+          "+1": {
+            "destino": "qCarry",
+            "f1": {
+              "direcao": "P",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "0"
+            }
+          },
+          "+_": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "+"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "1"
+            }
+          }
+        }
       }
     }
   ]
