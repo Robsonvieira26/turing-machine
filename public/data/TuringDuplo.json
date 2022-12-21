@@ -944,7 +944,7 @@
               "gravar": "+"
             },
             "f2": {
-              "direcao": "P",
+              "direcao": "E",
               "gravar": "0"
             }
           },
@@ -953,6 +953,17 @@
             "f1": {
               "direcao": "P",
               "gravar": "+"
+            },
+            "f2": {
+              "direcao": "P",
+              "gravar": "1"
+            }
+          },
+          "__": {
+            "destino": "qAceita",
+            "f1": {
+              "direcao": "P",
+              "gravar": "_"
             },
             "f2": {
               "direcao": "P",
